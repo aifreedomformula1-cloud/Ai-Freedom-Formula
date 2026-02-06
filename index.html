@@ -8,123 +8,168 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Poppins, sans-serif;
-}
-
-body{
-  background:#f5f7fb;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif;}
+body{background:#f5f7fb;overflow-x:hidden}
 
 /* HEADER */
 header{
   background:#0b1b3b;
   color:white;
-  padding:20px;
+  padding:18px;
   text-align:center;
-  font-size:22px;
+  font-size:20px;
   font-weight:600;
 }
 
-/* PROFILE CARD */
+/* PROFILE */
 .profile{
   background:linear-gradient(135deg,#0b1b3b,#1f3d7a);
   color:white;
-  width:90%;
+  width:92%;
   max-width:900px;
-  margin:30px auto;
-  padding:30px;
-  border-radius:15px;
+  margin:20px auto;
+  padding:25px;
+  border-radius:14px;
   text-align:center;
+  animation:fadeIn 1s ease;
 }
 
 .profile img{
-  width:100px;
+  width:90px;
   border-radius:50%;
   margin-bottom:10px;
 }
 
 .btn{
   display:inline-block;
-  padding:12px 22px;
+  padding:10px 18px;
   border-radius:8px;
-  margin:10px;
+  margin:8px;
   text-decoration:none;
   color:white;
-  font-weight:500;
+  font-size:14px;
 }
 
-.whatsapp{ background:#25D366; }
-.prompts{ background:#4a7cff; }
+.whatsapp{background:#25D366}
+.prompts{background:#4a7cff}
 
 /* SECTION */
 .section{
-  width:90%;
+  width:92%;
   max-width:1100px;
-  margin:40px auto;
+  margin:25px auto;
 }
 
-/* CARDS */
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
+/* SLIDER */
+.slider{
+  overflow:hidden;
+  position:relative;
+}
+
+.slide-track{
+  display:flex;
+  width:300%;
+  animation:scroll 15s linear infinite;
 }
 
 .card{
   background:white;
   border-radius:12px;
-  overflow:hidden;
+  margin:10px;
+  min-width:280px;
   box-shadow:0 5px 15px rgba(0,0,0,0.08);
+  transition:0.3s;
 }
 
-.card img{
-  width:100%;
-}
+.card:hover{transform:translateY(-5px)}
 
-.card-content{
-  padding:15px;
-}
+.card img{width:100%;border-radius:12px 12px 0 0}
 
-.price{
-  color:#0b1b3b;
-  font-weight:700;
-  font-size:20px;
-}
+.card-content{padding:15px;text-align:center}
+
+.price{font-weight:700;color:#0b1b3b;font-size:18px}
 
 .join{
   display:block;
   background:#0b7cff;
   color:white;
   padding:10px;
-  text-align:center;
   border-radius:6px;
-  text-decoration:none;
   margin-top:10px;
+  text-decoration:none;
 }
 
+/* SOCIAL LIST */
+.social-box{
+  background:white;
+  border-radius:12px;
+  margin:12px auto;
+  padding:14px;
+  max-width:900px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 3px 10px rgba(0,0,0,0.06);
+  transition:0.3s;
+}
+
+.social-box:hover{transform:scale(1.02)}
+
+.social-left{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:14px;
+}
+
+.icon{
+  width:28px;height:28px;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  color:white;font-size:14px;font-weight:600;
+}
+
+.yt{background:#ff0000}
+.ig{background:#e1306c}
+.fb{background:#1877f2}
+.wa{background:#25D366}
+.tg{background:#0088cc}
+.th{background:#000}
+
+/* FOOTER */
 footer{
   text-align:center;
-  padding:20px;
+  padding:18px;
   background:#0b1b3b;
   color:white;
-  margin-top:40px;
+  margin-top:25px;
+}
+
+/* ANIMATIONS */
+@keyframes scroll{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(15px)}
+  to{opacity:1}
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  .slide-track{animation-duration:18s}
+  .social-box{font-size:13px}
 }
 </style>
 </head>
 
 <body>
 
-<header>
-AI FREEDOM FORMULA
-</header>
+<header>AI FREEDOM FORMULA</header>
 
 <!-- PROFILE -->
 <div class="profile">
-<img src="https://via.placeholder.com/100" alt="profile">
+<img src="your-image.jpg">
 <h2>AI Freedom Formula</h2>
 <p>AI Courses • Automation • Online Income</p>
 
@@ -134,12 +179,13 @@ AI FREEDOM FORMULA
 
 <!-- COURSES -->
 <div class="section">
-<h2 style="margin-bottom:20px;">Popular Courses</h2>
+<h2>Popular Courses</h2>
 
-<div class="cards">
+<div class="slider">
+<div class="slide-track">
 
 <div class="card">
-<img src="https://via.placeholder.com/400x200">
+<img src="course1.jpg">
 <div class="card-content">
 <h3>AI Viral Mastery</h3>
 <p class="price">₹3490</p>
@@ -148,7 +194,7 @@ AI FREEDOM FORMULA
 </div>
 
 <div class="card">
-<img src="https://via.placeholder.com/400x200">
+<img src="course2.jpg">
 <div class="card-content">
 <h3>CGI Ads Mastery</h3>
 <p class="price">₹1990</p>
@@ -157,7 +203,7 @@ AI FREEDOM FORMULA
 </div>
 
 <div class="card">
-<img src="https://via.placeholder.com/400x200">
+<img src="course3.jpg">
 <div class="card-content">
 <h3>AI Automation</h3>
 <p class="price">₹2490</p>
@@ -167,10 +213,38 @@ AI FREEDOM FORMULA
 
 </div>
 </div>
+</div>
 
-<footer>
-© 2026 AI Freedom Formula
-</footer>
+<!-- SOCIAL LINKS -->
+<div class="section">
+
+<div class="social-box">
+<div class="social-left"><div class="icon yt">▶</div> Subscribe on YouTube</div>
+</div>
+
+<div class="social-box">
+<div class="social-left"><div class="icon ig">IG</div> Follow on Instagram</div>
+</div>
+
+<div class="social-box">
+<div class="social-left"><div class="icon fb">f</div> Follow on Facebook</div>
+</div>
+
+<div class="social-box">
+<div class="social-left"><div class="icon wa">WA</div> Join WhatsApp Channel</div>
+</div>
+
+<div class="social-box">
+<div class="social-left"><div class="icon tg">TG</div> Join Telegram Channel</div>
+</div>
+
+<div class="social-box">
+<div class="social-left"><div class="icon th">@</div> Follow on Threads</div>
+</div>
+
+</div>
+
+<footer>© 2026 AI Freedom Formula</footer>
 
 </body>
 </html>
