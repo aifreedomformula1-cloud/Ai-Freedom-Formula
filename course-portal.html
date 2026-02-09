@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Portal - AI FREEDOM FORMULA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        .portal-header{background:linear-gradient(135deg,#6366F1,#8B5CF6);color:white;padding:20px 0;}
+        .portal-nav{display:flex;justify-content:space-between;align-items:center;}
+        .module{background:white;padding:30px;margin:20px 0;border-radius:16px;box-shadow:0 4px 12px rgba(0,0,0,0.1);}
+        .lesson{background:#f8f9fa;padding:15px;margin:10px 0;border-radius:12px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;}
+        .lesson:hover{background:#e9ecef;}
+        .watch-btn{background:linear-gradient(135deg,#6366F1,#8B5CF6);color:white;padding:8px 20px;border:none;border-radius:50px;cursor:pointer;}
+    </style>
+</head>
+<body>
+    <header class="portal-header">
+        <nav class="portal-nav container">
+            <div style="font-size:1.5rem;font-weight:800;">AI FREEDOM FORMULA</div>
+            <div>
+                <span id="user-name" style="margin-right:20px;">Student</span>
+                <button onclick="logout()" style="background:rgba(255,255,255,0.2);color:white;padding:8px 20px;border:none;border-radius:50px;cursor:pointer;">Logout</button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container" style="padding-top:40px;">
+        <div style="background:linear-gradient(135deg,#EEF2FF,#FDF4FF);padding:40px;border-radius:20px;text-align:center;margin-bottom:40px;">
+            <h1>Welcome to AI Freedom Formula! 🎉</h1>
+            <p>Start your journey to financial freedom</p>
+        </div>
+
+        <div class="module">
+            <h2>🚀 Module 1: Foundation & Mindset</h2>
+            <p>8 lessons • 2h 30m</p>
+            <div class="lesson" onclick="watchLesson(1,1)">
+                <div><strong>Welcome & Course Overview</strong><br><small>15 min</small></div>
+                <button class="watch-btn">Watch Now</button>
+            </div>
+            <div class="lesson" onclick="watchLesson(1,2)">
+                <div><strong>The AI Revolution: Why Now?</strong><br><small>22 min</small></div>
+                <button class="watch-btn">Watch Now</button>
+            </div>
+            <div class="lesson" onclick="watchLesson(1,3)">
+                <div><strong>Breaking Free From 9-5 Mindset</strong><br><small>18 min</small></div>
+                <button class="watch-btn">Watch Now</button>
+            </div>
+        </div>
+
+        <div class="module">
+            <h2>🤖 Module 2: AI Tools Mastery</h2>
+            <p>12 lessons • 4h 15m</p>
+            <div class="lesson" onclick="watchLesson(2,1)">
+                <div><strong>ChatGPT Deep Dive</strong><br><small>35 min</small></div>
+                <button class="watch-btn">Watch Now</button>
+            </div>
+            <div class="lesson" onclick="watchLesson(2,2)">
+                <div><strong>Midjourney for Business</strong><br><small>28 min</small></div>
+                <button class="watch-btn">Watch Now</button>
+            </div>
+        </div>
+
+        <div class="module">
+            <h2>💰 Module 3: Building Your AI Business</h2>
+            <p>15 lessons • 5h 45m</p>
+            <div class="lesson" onclick="watchLesson(3,1)">
+                <div><strong>Finding Your Profitable Niche</strong><br><small>32 min</small></div>
+                <button class="watch-btn">Watch Now</button>
+            </div>
+        </div>
+
+        <div style="background:linear-gradient(135deg,#6366F1,#8B5CF6);color:white;padding:40px;border-radius:20px;text-align:center;margin:40px 0;">
+            <h2>Join Our Community</h2>
+            <p>Connect with 500+ AI entrepreneurs</p>
+            <div style="display:flex;gap:15px;justify-content:center;margin-top:20px;">
+                <a href="#" style="background:rgba(255,255,255,0.2);color:white;padding:12px 24px;border-radius:50px;text-decoration:none;">💬 WhatsApp</a>
+                <a href="#" style="background:rgba(255,255,255,0.2);color:white;padding:12px 24px;border-radius:50px;text-decoration:none;">✈️ Telegram</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script>
+        if (!checkAuth()) {}
+        const user = JSON.parse(localStorage.getItem('user') || '{}');
+        if (user.name) document.getElementById('user-name').textContent = user.name;
+        
+        function watchLesson(m, l) {
+            alert(`Playing Module ${m}, Lesson ${l}\n\nIn production, this will open your video player.`);
+        }
+    </script>
+</body>
+</html>

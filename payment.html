@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - AI FREEDOM FORMULA</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="auth.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="payment-page">
+        <div class="container" style="max-width:900px;padding:60px 20px;">
+            <h1 style="text-align:center;margin-bottom:40px;">Complete Your Purchase</h1>
+            
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;">
+                <div>
+                    <div style="background:white;padding:30px;border-radius:16px;box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+                        <h3>Payment Method</h3>
+                        <div style="margin:20px 0;">
+                            <div style="border:2px solid #6366F1;padding:20px;border-radius:12px;margin-bottom:15px;cursor:pointer;">
+                                💳 Credit/Debit Card (Razorpay)
+                            </div>
+                            <div style="border:2px solid #e0e0e0;padding:20px;border-radius:12px;margin-bottom:15px;cursor:pointer;">
+                                🅿️ PayPal
+                            </div>
+                            <div style="border:2px solid #e0e0e0;padding:20px;border-radius:12px;cursor:pointer;">
+                                📱 UPI (PhonePe, Google Pay, Paytm)
+                            </div>
+                        </div>
+                        
+                        <div style="background:#f8f9fa;padding:20px;border-radius:12px;margin:20px 0;text-align:center;">
+                            <p>🔒 Payment integration placeholder</p>
+                            <small>Integrate Razorpay, Stripe, or PayPal</small>
+                        </div>
+                        
+                        <button onclick="processPayment()" style="width:100%;background:linear-gradient(135deg,#6366F1,#8B5CF6);color:white;padding:16px;border:none;border-radius:50px;font-weight:700;font-size:1.1rem;cursor:pointer;">
+                            🔒 Pay Now
+                        </button>
+                    </div>
+                </div>
+                
+                <div>
+                    <div style="background:#f8f9fa;padding:30px;border-radius:16px;">
+                        <h3>Order Summary</h3>
+                        <div style="padding:15px 0;border-bottom:1px solid #e0e0e0;">
+                            <div style="display:flex;justify-content:space-between;">
+                                <span id="plan-name-payment">AI Freedom Pro</span>
+                                <span>₹<span id="plan-price-payment">58,999</span></span>
+                            </div>
+                        </div>
+                        <div style="padding:20px 0;font-size:1.5rem;font-weight:800;">
+                            <div style="display:flex;justify-content:space-between;">
+                                <span>Total</span>
+                                <span style="background:linear-gradient(135deg,#6366F1,#8B5CF6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">₹<span id="total-price">58,999</span></span>
+                            </div>
+                        </div>
+                        
+                        <div style="background:white;padding:20px;border-radius:12px;margin-top:20px;">
+                            <h4>✅ Included:</h4>
+                            <ul style="line-height:2;">
+                                <li>✅ Lifetime course access</li>
+                                <li>✅ Community access</li>
+                                <li>✅ Weekly coaching</li>
+                                <li>✅ 90-day guarantee</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background:#10B981;color:white;padding:20px;border-radius:12px;margin-top:20px;text-align:center;">
+                            <strong>🛡️ 90-Day Money-Back Guarantee</strong>
+                            <p style="margin:5px 0 0;">Full refund if not satisfied</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const plan = urlParams.get('plan') || 'pro';
+        const prices = {starter: '24,999', pro: '58,999', vip: '1,68,999'};
+        const names = {starter: 'AI Starter', pro: 'AI Freedom Pro', vip: 'AI Elite VIP'};
+        
+        document.getElementById('plan-name-payment').textContent = names[plan];
+        document.getElementById('plan-price-payment').textContent = prices[plan];
+        document.getElementById('total-price').textContent = prices[plan];
+        
+        function processPayment() {
+            const btn = event.target;
+            btn.textContent = '⏳ Processing...';
+            btn.disabled = true;
+            setTimeout(() => {
+                const user = JSON.parse(localStorage.getItem('user') || '{}');
+                user.hasPaid = true;
+                localStorage.setItem('user', JSON.stringify(user));
+                alert('Payment successful! Welcome to AI Freedom Formula! 🎉');
+                sessionStorage.setItem('isLoggedIn', 'true');
+                window.location.href = 'course-portal.html';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
