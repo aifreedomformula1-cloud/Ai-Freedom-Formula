@@ -4,12 +4,13 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/fireba
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "YOUR_KEY",
-  authDomain: "YOUR_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_BUCKET",
-  messagingSenderId: "YOUR_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyAFFqKzO3sCjZEAyYZCMoTTujkWP_rTDZw",
+  authDomain: "ai-freedom-formula.firebaseapp.com",
+  projectId: "ai-freedom-formula",
+  storageBucket: "ai-freedom-formula.firebasestorage.app",
+  messagingSenderId: "239889566140",
+  appId: "1:239889566140:web:b468abd706b109ec2cc3b9",
+  measurementId: "G-D5EQ4W0LJY"
 };
 
 const app = initializeApp(firebaseConfig);
