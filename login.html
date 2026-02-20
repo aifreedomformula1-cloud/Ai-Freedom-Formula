@@ -1,48 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - AI FREEDOM FORMULA</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="auth.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+<link rel="stylesheet" href="auth.css">
 </head>
 <body>
-    <div class="auth-page">
-        <div class="auth-left">
-            <a href="index.html" class="back-btn">← Back to Home</a>
-            <div class="auth-box">
-                <h1>Welcome Back!</h1>
-                <p class="auth-subtitle">Log in to access your courses and community</p>
-                
-                <form id="login-form" class="form">
-                    <input type="email" id="login-email" placeholder="Email Address" required>
-                    <input type="password" id="login-password" placeholder="Password" required>
-                    
-                    <label class="checkbox-label">
-                        <input type="checkbox">
-                        Remember me
-                    </label>
 
-                    <button type="submit" class="btn-submit">Log In</button>
-                </form>
+<div class="auth-container">
+  <div class="auth-box">
+    <h2>Welcome Back</h2>
+    <p class="subtitle">Login to access your dashboard</p>
 
-                <p class="auth-footer-text">Don't have an account? <a href="signup.html">Sign up</a></p>
-            </div>
-        </div>
+    <form id="login-form">
+      <input type="email" id="login-email" placeholder="Email Address" required>
+      <input type="password" id="login-password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
 
-        <div class="auth-right">
-            <h2>Access Your Benefits</h2>
-            <ul class="feature-list">
-                <li>✅ All premium course videos</li>
-                <li>✅ Exclusive community forum</li>
-                <li>✅ Weekly coaching calls</li>
-                <li>✅ Downloadable resources</li>
-                <li>✅ Progress tracking dashboard</li>
-            </ul>
-        </div>
-    </div>
-    <script src="auth.js"></script>
+    <p class="bottom-text">
+      Don’t have an account? <a href="signup.html">Sign Up</a>
+    </p>
+  </div>
+</div>
+
+<script type="module">
+import { auth } from "./firebase.js";
+import { signInWithEmailAndPassword }
+from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+const form = document.getElementById("login-form");
+
+form.addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const email = document.getElementById("login-email").value;
+    const password = document.getElementById("login-password").value;
+
+    signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+            alert("Login Successful!");
+            window.location.href = "dashboard.html";
+        })
+        .catch((error) => {
+            alert(error.message);
+        });
+});
+</script>
+
 </body>
 </html>
