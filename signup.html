@@ -1,85 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - AI FREEDOM FORMULA</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="auth.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up</title>
+<link rel="stylesheet" href="auth.css">
 </head>
 <body>
-    <div class="auth-page">
-        <div class="auth-left">
-            <a href="index.html" class="back-btn">← Back to Home</a>
-            <div class="auth-box">
-                <h1>Create Your Account</h1>
-                <p class="auth-subtitle">Join 500+ Indian entrepreneurs on their AI journey</p>
-                
-                <div class="plan-display" id="plan-display">
-                    <div class="plan-badge">Selected Plan</div>
-                    <h3 id="plan-name-display">AI Freedom Pro</h3>
-                    <p class="plan-price-display">₹<span id="plan-price-display">58,999</span> one-time</p>
-                    <button onclick="showPlanModal()" class="change-btn">Change Plan</button>
-                </div>
 
-                <form id="signup-form" class="form">
-                    <input type="text" placeholder="Full Name" required>
-                    <input type="email" placeholder="Email Address" required>
-                    <input type="password" placeholder="Password" required>
-                    <input type="password" placeholder="Confirm Password" required>
-                    
-                    <label class="checkbox-label">
-                        <input type="checkbox" required>
-                        I agree to Terms of Service and Privacy Policy
-                    </label>
+<div class="auth-container">
+  <div class="auth-box">
+    <h2>Create Account</h2>
+    <p class="subtitle">Start your AI journey today 🚀</p>
 
-                    <button type="submit" class="btn-submit">Create Account & Proceed to Payment</button>
-                </form>
+    <form id="signup-form">
+      <input type="text" id="fullname" placeholder="Full Name" required>
+      <input type="email" id="email" placeholder="Email Address" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+      <button type="submit">Create Account</button>
+    </form>
 
-                <p class="auth-footer-text">Already have an account? <a href="login.html">Log in</a></p>
-            </div>
-        </div>
+    <p class="bottom-text">
+      Already have an account? <a href="login.html">Login</a>
+    </p>
+  </div>
+</div>
 
-        <div class="auth-right">
-            <h2>What You'll Get</h2>
-            <ul class="feature-list">
-                <li>✅ Lifetime access to all courses</li>
-                <li>✅ Join 500+ entrepreneur community</li>
-                <li>✅ Weekly live coaching sessions</li>
-                <li>✅ All future updates FREE</li>
-                <li>✅ 90-day money-back guarantee</li>
-            </ul>
-            <div class="testimonial">
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-                <p>"Changed my life completely!"</p>
-                <strong>- Rahul P., Mumbai</strong>
-            </div>
-        </div>
-    </div>
+<script type="module">
+import { auth } from "./firebase.js";
+import { createUserWithEmailAndPassword }
+from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
-    <div id="plan-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closePlanModal()">&times;</span>
-            <h2>Choose Your Plan</h2>
-            <div class="plan-options">
-                <label class="plan-option">
-                    <input type="radio" name="plan" value="starter" data-price="24999">
-                    <div><strong>AI Starter</strong> - ₹24,999</div>
-                </label>
-                <label class="plan-option">
-                    <input type="radio" name="plan" value="pro" data-price="58999" checked>
-                    <div><strong>AI Freedom Pro</strong> - ₹58,999 <span class="popular-badge">Popular</span></div>
-                </label>
-                <label class="plan-option">
-                    <input type="radio" name="plan" value="vip" data-price="168999">
-                    <div><strong>AI Elite VIP</strong> - ₹1,68,999</div>
-                </label>
-            </div>
-            <button onclick="confirmPlan()" class="btn-confirm">Confirm Plan</button>
-        </div>
-    </div>
+const form = document.getElementById("signup-form");
 
-    <script src="auth.js"></script>
+form.addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+
+    if(password !== confirmPassword){
+        alert("Passwords do not match");
+        return;
+    }
+
+    createUserWithEmailAndPassword(auth, email, password)
+        .then(() => {
+            alert("Signup Successful!");
+            window.location.href = "login.html";
+        })
+        .catch((error) => {
+            alert(error.message);
+        });
+});
+</script>
+
 </body>
 </html>
