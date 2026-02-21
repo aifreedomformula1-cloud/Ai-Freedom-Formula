@@ -1,554 +1,586 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI FREEDOM FORMULA - Master AI & Build Your Freedom Business in India</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="styles.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI FREEDOM FORMULA – Build Your AI-Powered Business in India</title>
+  <meta name="description" content="Join 500+ Indian entrepreneurs who escaped the 9-5 grind using AI. Generate ₹50,000–₹4,00,000/month in 90 days." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="styles.css" rel="stylesheet" />
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <nav class="nav container">
-            <div class="logo">
-                <img src="company-logo.png" alt="AI Freedom Formula" class="logo-img" id="company-logo">
-                <span class="logo-text">AI FREEDOM FORMULA</span>
-            </div>
-            <div class="nav-links">
-                <a href="#home">Home</a>
-                <a href="#courses">Courses</a>
-                <a href="#about">About</a>
-                <a href="login.html" class="btn-nav-secondary">Login</a>
-                <a href="signup.html" class="btn-nav-primary">Get Started Free</a>
-            </div>
-            <div class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</div>
-        </nav>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-bg-pattern"></div>
-        <div class="container">
-            <div class="hero-grid">
-                <div class="hero-content">
-                    <div class="announcement-badge">
-                        <span class="badge-icon">🔥</span>
-                        <span class="badge-text">500+ Indian Entrepreneurs Already Enrolled</span>
-                    </div>
-                    
-                    <h1 class="hero-title">
-                        Stop Trading Time for Money.
-                        <span class="gradient-text">Build Your AI-Powered Freedom Business</span>
-                    </h1>
-                    
-                    <p class="hero-description">
-                        Join 500+ Indian entrepreneurs who escaped the 9-5 grind using AI. Learn the exact system that generates <strong>₹50,000-₹4,00,000/month</strong> in 90 days or less.
-                    </p>
-                    
-                    <div class="hero-stats-grid">
-                        <div class="stat-box">
-                            <div class="stat-number">500+</div>
-                            <div class="stat-text">Active Students</div>
-                        </div>
-                        <div class="stat-box">
-                            <div class="stat-number">4.9/5</div>
-                            <div class="stat-text">Student Rating</div>
-                        </div>
-                        <div class="stat-box">
-                            <div class="stat-number">90 Days</div>
-                            <div class="stat-text">To Results</div>
-                        </div>
-                    </div>
-                    
-                    <div class="hero-cta-section">
-                        <a href="signup.html" class="btn-hero-primary">
-                            🚀 Join AI Community Now - It's FREE
-                        </a>
-                        <p class="cta-subtext">⚡ No Credit Card Required • Instant Access</p>
-                    </div>
-                </div>
-                
-                <div class="hero-image-section">
-                    <div class="hero-image-wrapper">
-                        <img src="WhatsApp Image 2026-02-06 at 17.40.49.jpeg" alt="Your Success Mentor" class="hero-img" id="instructor-img">
-                        <div class="floating-element element-1">
-                            <span class="element-icon">✅</span>
-                            <span class="element-text">Verified Mentor</span>
-                        </div>
-                        <div class="floating-element element-2">
-                            <span class="element-icon">💰</span>
-                            <span class="element-text">Proven Results</span>
-                        </div>
-                        <div class="floating-element element-3">
-                            <span class="element-icon">🇮🇳</span>
-                            <span class="element-text">Made in India</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- ═══════════════════════════════════════════════
+     FLASH SALE BANNER — FOMO TIMER
+═══════════════════════════════════════════════ -->
+<div class="flash-banner" id="flash-banner">
+  <div class="flash-banner__inner">
+    <span>🔥</span>
+    <span class="flash-banner__label"><strong>FLASH SALE ENDS IN:</strong></span>
+    <div class="countdown-wrap">
+      <div class="countdown-box"><span id="cd-hours">00</span><small>HRS</small></div>
+      <span class="countdown-sep">:</span>
+      <div class="countdown-box"><span id="cd-mins">00</span><small>MIN</small></div>
+      <span class="countdown-sep">:</span>
+      <div class="countdown-box"><span id="cd-secs">00</span><small>SEC</small></div>
+    </div>
+    <span class="flash-banner__deal">Save <strong>₹32,000</strong> on AI Freedom Pro!</span>
+    <a href="#courses" class="flash-banner__cta">Claim Now →</a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     HEADER / NAVBAR
+═══════════════════════════════════════════════ -->
+<header class="header" id="header">
+  <nav class="nav container">
+    <a href="/" class="logo">
+      <span class="logo-text">AI FREEDOM FORMULA</span>
+    </a>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#courses">Courses</a></li>
+      <li><a href="#testimonials">Results</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#about">About</a></li>
+      <li class="nav-auth-group" id="nav-guest">
+        <a href="login.html" class="btn-nav-outline">Login</a>
+        <a href="signup.html" class="btn-nav-primary">Get Started Free</a>
+      </li>
+      <li class="nav-auth-group" id="nav-auth" style="display:none;">
+        <a href="dashboard.html" class="btn-nav-primary">👋 Dashboard</a>
+        <button class="btn-nav-outline btn-nav-logout" onclick="logout()">Logout</button>
+      </li>
+    </ul>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<!-- ═══════════════════════════════════════════════
+     HERO SECTION
+═══════════════════════════════════════════════ -->
+<section class="hero" id="home">
+  <div class="hero-bg-dots"></div>
+  <div class="container">
+    <div class="hero-grid">
+
+      <div class="hero-copy">
+        <div class="badge badge--fire">🔥 500+ Indian Entrepreneurs Already Enrolled</div>
+
+        <h1 class="hero-title">
+          Stop Trading Time for Money.
+          <span class="gradient-text">Build Your AI-Powered Freedom Business</span>
+        </h1>
+
+        <p class="hero-desc">
+          Join 500+ Indian entrepreneurs who escaped the 9-5 grind using AI.
+          Learn the exact system that generates
+          <strong>₹50,000–₹4,00,000/month</strong> in 90 days or less.
+        </p>
+
+        <div class="hero-stats">
+          <div class="hero-stat"><strong>500+</strong><span>Active Students</span></div>
+          <div class="hero-stat-div"></div>
+          <div class="hero-stat"><strong>4.9/5</strong><span>Student Rating</span></div>
+          <div class="hero-stat-div"></div>
+          <div class="hero-stat"><strong>90 Days</strong><span>To Results</span></div>
         </div>
-    </section>
 
-    <!-- Problem Section -->
-    <section class="problem-section">
-        <div class="container">
-            <div class="section-header-center">
-                <h2 class="section-title">Are You Stuck in the Rat Race?</h2>
-                <p class="section-subtitle">Join thousands of Indians breaking free from traditional employment</p>
+        <a href="signup.html" class="btn btn--secondary btn--lg pulse-anim">
+          🚀 Join AI Community — It's FREE
+        </a>
+        <p class="hero-cta-sub">⚡ No Credit Card Required &bull; Instant Access</p>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card__img">
+            <!-- Uncomment when you have a real photo: -->
+            <!-- <img src="images/instructor.jpg" alt="AI Mentor" /> -->
+            <div class="hero-placeholder">
+              <span>🧠</span>
+              <p>Your AI Freedom Mentor</p>
+              <small>India's #1 AI Business Coach</small>
             </div>
-            
-            <div class="problem-grid">
-                <div class="problem-card">
-                    <div class="problem-icon">😫</div>
-                    <h3 class="problem-title">Working 60+ Hours/Week</h3>
-                    <p class="problem-text">Trading your time and energy for a fixed paycheck while others build wealth</p>
-                </div>
-                <div class="problem-card">
-                    <div class="problem-icon">😰</div>
-                    <h3 class="problem-title">AI is Taking Over</h3>
-                    <p class="problem-text">Watching AI replace jobs while you struggle to adapt to the new economy</p>
-                </div>
-                <div class="problem-card">
-                    <div class="problem-icon">😤</div>
-                    <h3 class="problem-title">No Clear Path Forward</h3>
-                    <p class="problem-text">Consuming endless content but never finding a proven system that actually works</p>
-                </div>
-            </div>
+          </div>
+          <div class="hero-float f1">✅ Verified Mentor</div>
+          <div class="hero-float f2">💰 Proven Results</div>
+          <div class="hero-float f3">🇮🇳 Made in India</div>
         </div>
-    </section>
+      </div>
 
-    <!-- Solution Section -->
-    <section class="solution-section">
-        <div class="container">
-            <div class="solution-box">
-                <h2 class="solution-title">What If You Could...</h2>
-                <div class="benefits-grid">
-                    <div class="benefit-item">
-                        <span class="benefit-icon">✅</span>
-                        <span class="benefit-text">Work 4 hours/day from anywhere in India</span>
-                    </div>
-                    <div class="benefit-item">
-                        <span class="benefit-icon">✅</span>
-                        <span class="benefit-text">Use AI to do 90% of the heavy lifting</span>
-                    </div>
-                    <div class="benefit-item">
-                        <span class="benefit-icon">✅</span>
-                        <span class="benefit-text">Build multiple income streams on autopilot</span>
-                    </div>
-                    <div class="benefit-item">
-                        <span class="benefit-icon">✅</span>
-                        <span class="benefit-text">Join a community of 500+ Indian winners</span>
-                    </div>
-                    <div class="benefit-item">
-                        <span class="benefit-icon">✅</span>
-                        <span class="benefit-text">Get results in 90 days or less (guaranteed)</span>
-                    </div>
-                    <div class="benefit-item">
-                        <span class="benefit-icon">✅</span>
-                        <span class="benefit-text">Learn in Hindi & English both</span>
-                    </div>
-                </div>
-                <a href="#courses" class="btn-solution">Show Me How →</a>
-            </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     PROBLEM SECTION
+═══════════════════════════════════════════════ -->
+<section class="section bg-white" id="problem">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-title">Are You Stuck in the Rat Race?</h2>
+      <p class="section-sub">Join thousands of Indians breaking free from traditional employment</p>
+    </div>
+    <div class="cards-3">
+      <div class="problem-card">
+        <div class="problem-icon">😫</div>
+        <h3>Working 60+ Hours/Week</h3>
+        <p>Trading your time and energy for a fixed paycheck while others build wealth</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">😰</div>
+        <h3>AI is Taking Over</h3>
+        <p>Watching AI replace jobs while you struggle to adapt to the new economy</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">😤</div>
+        <h3>No Clear Path Forward</h3>
+        <p>Consuming endless content but never finding a proven system that actually works</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SOLUTION
+═══════════════════════════════════════════════ -->
+<section class="section bg-gradient-soft" id="solution">
+  <div class="container">
+    <div class="solution-box">
+      <h2>What If You Could…</h2>
+      <div class="benefits-grid">
+        <div class="benefit-item"><span>✅</span>Work 4 hours/day from anywhere in India</div>
+        <div class="benefit-item"><span>✅</span>Use AI to do 90% of the heavy lifting</div>
+        <div class="benefit-item"><span>✅</span>Build multiple income streams on autopilot</div>
+        <div class="benefit-item"><span>✅</span>Join a community of 500+ Indian winners</div>
+        <div class="benefit-item"><span>✅</span>Get results in 90 days or less (guaranteed)</div>
+        <div class="benefit-item"><span>✅</span>Learn in Hindi &amp; English both</div>
+      </div>
+      <a href="#courses" class="btn btn--primary">Show Me How →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     COURSES / PRICING
+═══════════════════════════════════════════════ -->
+<section class="section bg-white" id="courses">
+  <div class="container">
+    <div class="section-head">
+      <div class="badge badge--blue">🎓 Premium Training Programs</div>
+      <h2 class="section-title">Choose Your Freedom Path</h2>
+      <p class="section-sub">All courses include lifetime access, community support, and money-back guarantee</p>
+      <p class="scarcity">⚠️ Only <strong>17 spots left</strong> at this price — don't miss out!</p>
+    </div>
+
+    <div class="pricing-grid">
+
+      <!-- Starter -->
+      <div class="pricing-card">
+        <div class="pricing-card__head">
+          <h3>AI Starter</h3>
+          <p>Perfect for beginners</p>
         </div>
-    </section>
-
-    <!-- Courses/Pricing Section -->
-    <section class="courses-section" id="courses">
-        <div class="container">
-            <div class="section-header-center">
-                <div class="section-badge">🎓 Premium Training Programs</div>
-                <h2 class="section-title">Choose Your Freedom Path</h2>
-                <p class="section-subtitle">All courses include lifetime access, community support, and money-back guarantee</p>
-            </div>
-
-            <div class="pricing-wrapper">
-                <!-- Starter Package -->
-                <div class="pricing-box">
-                    <div class="pricing-header">
-                        <h3 class="plan-name">AI Starter</h3>
-                        <p class="plan-tagline">Perfect for beginners</p>
-                    </div>
-                    <div class="pricing-amount">
-                        <span class="currency">₹</span>
-                        <span class="price">24,999</span>
-                        <span class="period">/one-time</span>
-                    </div>
-                    <ul class="features-list">
-                        <li><span class="check">✅</span> 15+ Video Lessons</li>
-                        <li><span class="check">✅</span> AI Tools Masterclass</li>
-                        <li><span class="check">✅</span> ChatGPT Prompts Library</li>
-                        <li><span class="check">✅</span> Community Access</li>
-                        <li><span class="check">✅</span> 30-Day Money Back</li>
-                        <li><span class="cross">❌</span> 1-on-1 Coaching</li>
-                        <li><span class="cross">❌</span> Advanced Automation</li>
-                    </ul>
-                    <a href="signup.html?plan=starter" class="btn-pricing-outline">Get Started</a>
-                </div>
-
-                <!-- Pro Package (Featured) -->
-                <div class="pricing-box featured">
-                    <div class="popular-tag">🔥 MOST POPULAR</div>
-                    <div class="pricing-header">
-                        <h3 class="plan-name">AI Freedom Pro</h3>
-                        <p class="plan-tagline">The complete system</p>
-                    </div>
-                    <div class="pricing-amount">
-                        <span class="currency">₹</span>
-                        <span class="price">58,999</span>
-                        <span class="period">/one-time</span>
-                    </div>
-                    <div class="savings-badge">Save ₹32,000!</div>
-                    <ul class="features-list">
-                        <li><span class="check">✅</span> 50+ Video Lessons</li>
-                        <li><span class="check">✅</span> Complete AI Toolkit</li>
-                        <li><span class="check">✅</span> Business Templates</li>
-                        <li><span class="check">✅</span> Private Community</li>
-                        <li><span class="check">✅</span> Weekly Group Coaching</li>
-                        <li><span class="check">✅</span> Automation Blueprints</li>
-                        <li><span class="check">✅</span> Lifetime Updates</li>
-                        <li><span class="check">✅</span> 60-Day Money Back</li>
-                    </ul>
-                    <a href="signup.html?plan=pro" class="btn-pricing-primary">Join Now - 50 Spots Left!</a>
-                </div>
-
-                <!-- VIP Package -->
-                <div class="pricing-box">
-                    <div class="pricing-header">
-                        <h3 class="plan-name">AI Elite VIP</h3>
-                        <p class="plan-tagline">Done-with-you service</p>
-                    </div>
-                    <div class="pricing-amount">
-                        <span class="currency">₹</span>
-                        <span class="price">1,68,999</span>
-                        <span class="period">/one-time</span>
-                    </div>
-                    <ul class="features-list">
-                        <li><span class="check">✅</span> Everything in Pro</li>
-                        <li><span class="check">✅</span> 1-on-1 Coaching (4 Calls)</li>
-                        <li><span class="check">✅</span> Done-For-You Setup</li>
-                        <li><span class="check">✅</span> VIP Discord Channel</li>
-                        <li><span class="check">✅</span> Priority Support</li>
-                        <li><span class="check">✅</span> Advanced AI Agents</li>
-                        <li><span class="check">✅</span> Business Launch Plan</li>
-                        <li><span class="check">✅</span> 90-Day Money Back</li>
-                    </ul>
-                    <a href="signup.html?plan=vip" class="btn-pricing-outline">Get VIP Access</a>
-                </div>
-            </div>
-
-            <div class="guarantee-box">
-                <div class="guarantee-icon">🛡️</div>
-                <div class="guarantee-content">
-                    <h3 class="guarantee-title">100% Money-Back Guarantee</h3>
-                    <p class="guarantee-text">If you don't see results in 90 days, we'll refund every rupee. No questions asked.</p>
-                </div>
-            </div>
+        <div class="pricing-card__price">
+          <span class="price-sym">₹</span><span class="price-num">24,999</span><span class="price-per">/one-time</span>
         </div>
-    </section>
+        <ul class="feat-list">
+          <li class="yes">15+ Video Lessons</li>
+          <li class="yes">AI Tools Masterclass</li>
+          <li class="yes">ChatGPT Prompts Library</li>
+          <li class="yes">Community Access</li>
+          <li class="yes">30-Day Money Back</li>
+          <li class="no">1-on-1 Coaching</li>
+          <li class="no">Advanced Automation</li>
+        </ul>
+        <a href="signup.html?plan=starter" class="btn btn--outline btn--block">Get Started</a>
+      </div>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials-section">
-        <div class="container">
-            <div class="section-header-center">
-                <h2 class="section-title">Real People. Real Results. Real Freedom.</h2>
-                <p class="section-subtitle">See what our Indian students are saying</p>
-            </div>
-            
-            <div class="testimonials-slider">
-                <div class="testimonial-track" id="testimonial-track">
-                    <div class="testimonial-slide">
-                        <div class="testimonial-card">
-                            <div class="stars">⭐⭐⭐⭐⭐</div>
-                            <p class="testimonial-text">"I went from ₹25,000/month to ₹1,25,000/month in just 60 days. This course literally changed my life!"</p>
-                            <div class="testimonial-author">
-                                <div class="author-avatar">S</div>
-                                <div class="author-info">
-                                    <strong>Sneha Sharma</strong>
-                                    <span>Former Teacher → AI Consultant, Delhi</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial-slide">
-                        <div class="testimonial-card">
-                            <div class="stars">⭐⭐⭐⭐⭐</div>
-                            <p class="testimonial-text">"Finally quit my soul-crushing job. Now I work 4 hours/day from Goa and make 3x more. Thank you!"</p>
-                            <div class="testimonial-author">
-                                <div class="author-avatar">R</div>
-                                <div class="author-info">
-                                    <strong>Rahul Patel</strong>
-                                    <span>Ex-Corporate Slave → Free, Mumbai</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial-slide">
-                        <div class="testimonial-card">
-                            <div class="stars">⭐⭐⭐⭐⭐</div>
-                            <p class="testimonial-text">"The community alone is worth 10x the price. These people actually care about your success."</p>
-                            <div class="testimonial-author">
-                                <div class="author-avatar">P</div>
-                                <div class="author-info">
-                                    <strong>Priya Reddy</strong>
-                                    <span>Struggling Freelancer → 6-Figure Business, Bangalore</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-slide">
-                        <div class="testimonial-card">
-                            <div class="stars">⭐⭐⭐⭐⭐</div>
-                            <p class="testimonial-text">"As a college student, I never thought I could make ₹50K/month. Now I'm earning while studying!"</p>
-                            <div class="testimonial-author">
-                                <div class="author-avatar">A</div>
-                                <div class="author-info">
-                                    <strong>Arjun Singh</strong>
-                                    <span>College Student → Young Entrepreneur, Pune</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-slide">
-                        <div class="testimonial-card">
-                            <div class="stars">⭐⭐⭐⭐⭐</div>
-                            <p class="testimonial-text">"Best decision of my career. The Hindi support made it so easy to understand and implement!"</p>
-                            <div class="testimonial-author">
-                                <div class="author-avatar">N</div>
-                                <div class="author-info">
-                                    <strong>Neha Gupta</strong>
-                                    <span>Homemaker → AI Business Owner, Jaipur</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Duplicate for seamless loop -->
-                    <div class="testimonial-slide">
-                        <div class="testimonial-card">
-                            <div class="stars">⭐⭐⭐⭐⭐</div>
-                            <p class="testimonial-text">"I went from ₹25,000/month to ₹1,25,000/month in just 60 days. This course literally changed my life!"</p>
-                            <div class="testimonial-author">
-                                <div class="author-avatar">S</div>
-                                <div class="author-info">
-                                    <strong>Sneha Sharma</strong>
-                                    <span>Former Teacher → AI Consultant, Delhi</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <!-- Pro -->
+      <div class="pricing-card pricing-card--featured">
+        <div class="pricing-card__tag">🔥 MOST POPULAR</div>
+        <div class="pricing-card__head">
+          <h3>AI Freedom Pro</h3>
+          <p>The complete system</p>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about-section" id="about">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-image-wrapper">
-                    <img src="company-image.jpg" alt="AI Freedom Formula Team" class="about-img" id="company-img">
-                </div>
-                <div class="about-content">
-                    <div class="section-badge">About Us</div>
-                    <h2 class="about-title">Your Partner in AI Freedom</h2>
-                    <p class="about-text">
-                        AI FREEDOM FORMULA is a proud subsidiary of <strong>TOP1WAY</strong>, India's leading education company dedicated to helping entrepreneurs harness the power of AI to build location-independent businesses.
-                    </p>
-                    <p class="about-text">
-                        We've helped over 500+ Indian students break free from traditional employment and build sustainable, AI-powered income streams. Our proven methodology combines cutting-edge AI tools with timeless business principles, tailored specifically for the Indian market.
-                    </p>
-                    
-                    <div class="about-stats-grid">
-                        <div class="about-stat">
-                            <h3 class="stat-value">500+</h3>
-                            <p class="stat-label">Success Stories</p>
-                        </div>
-                        <div class="about-stat">
-                            <h3 class="stat-value">₹2Cr+</h3>
-                            <p class="stat-label">Student Revenue</p>
-                        </div>
-                        <div class="about-stat">
-                            <h3 class="stat-value">28+</h3>
-                            <p class="stat-label">Indian States</p>
-                        </div>
-                    </div>
-                    
-                    <div class="company-badge">
-                        <span class="badge-icon">🏢</span>
-                        <span class="badge-text">A proud subsidiary of <strong>TOP1WAY</strong> - Empowering Indian entrepreneurs since 2020</span>
-                    </div>
-                </div>
-            </div>
+        <div class="pricing-card__price">
+          <span class="price-sym">₹</span><span class="price-num">58,999</span><span class="price-per">/one-time</span>
         </div>
-    </section>
+        <div class="savings-pill">Save ₹32,000!</div>
+        <ul class="feat-list">
+          <li class="yes">50+ Video Lessons</li>
+          <li class="yes">Complete AI Toolkit</li>
+          <li class="yes">Business Templates</li>
+          <li class="yes">Private Community</li>
+          <li class="yes">Weekly Group Coaching</li>
+          <li class="yes">Automation Blueprints</li>
+          <li class="yes">Lifetime Updates</li>
+          <li class="yes">60-Day Money Back</li>
+        </ul>
+        <a href="signup.html?plan=pro" class="btn btn--primary btn--block pulse-anim">Join Now — 17 Spots Left!</a>
+      </div>
 
-    <!-- Final CTA Section -->
-    <section class="final-cta-section">
-        <div class="container">
-            <div class="cta-content-center">
-                <h2 class="cta-main-title">The Question Is Not "Can I Do This?"</h2>
-                <p class="cta-subtitle">The question is: "How much longer will I let fear hold me back?"</p>
-                
-                <div class="urgency-banner">
-                    <div class="urgency-item">
-                        <span class="urgency-icon">⏰</span>
-                        <span class="urgency-text">Next cohort starts in <strong id="countdown">7 days</strong></span>
-                    </div>
-                    <div class="urgency-item">
-                        <span class="urgency-icon">👥</span>
-                        <span class="urgency-text">Only <strong>23 spots remaining</strong> at this price</span>
-                    </div>
-                </div>
-                
-                <a href="signup.html" class="btn-cta-large">
-                    🚀 Join the AI Community Now - FREE
-                </a>
-                
-                <div class="trust-points">
-                    <span class="trust-point">✅ 90-Day Money-Back Guarantee</span>
-                    <span class="trust-point">✅ Instant Access</span>
-                    <span class="trust-point">✅ Join 500+ Winners</span>
-                </div>
-            </div>
+      <!-- VIP -->
+      <div class="pricing-card">
+        <div class="pricing-card__head">
+          <h3>AI Elite VIP</h3>
+          <p>Done-with-you service</p>
         </div>
-    </section>
-
-    <!-- Social Media Section -->
-    <section class="social-section">
-        <div class="container">
-            <div class="section-header-center">
-                <h3 class="social-title">Connect With Our Community</h3>
-                <p class="social-subtitle">Join thousands of AI entrepreneurs on their freedom journey</p>
-            </div>
-            
-            <div class="social-grid">
-                <a href="#" class="social-card youtube">
-                    <div class="social-icon">▶️</div>
-                    <div class="social-info">
-                        <strong>Subscribe on Youtube</strong>
-                        <span>Free AI tutorials & tips</span>
-                    </div>
-                    <div class="social-arrow">→</div>
-                </a>
-                
-                <a href="#" class="social-card instagram">
-                    <div class="social-icon">📷</div>
-                    <div class="social-info">
-                        <strong>Follow on Instagram</strong>
-                        <span>Daily success stories</span>
-                    </div>
-                    <div class="social-arrow">→</div>
-                </a>
-                
-                <a href="#" class="social-card facebook">
-                    <div class="social-icon">👍</div>
-                    <div class="social-info">
-                        <strong>Follow on Facebook</strong>
-                        <span>Community updates</span>
-                    </div>
-                    <div class="social-arrow">→</div>
-                </a>
-                
-                <a href="#" class="social-card whatsapp">
-                    <div class="social-icon">💬</div>
-                    <div class="social-info">
-                        <strong>Join Whatsapp Channel</strong>
-                        <span>Instant notifications</span>
-                    </div>
-                    <div class="social-arrow">→</div>
-                </a>
-                
-                <a href="#" class="social-card telegram">
-                    <div class="social-icon">✈️</div>
-                    <div class="social-info">
-                        <strong>Join Telegram Channel</strong>
-                        <span>Exclusive content</span>
-                    </div>
-                    <div class="social-arrow">→</div>
-                </a>
-                
-                <a href="#" class="social-card threads">
-                    <div class="social-icon">🧵</div>
-                    <div class="social-info">
-                        <strong>Follow on Threads</strong>
-                        <span>Quick AI tips</span>
-                    </div>
-                    <div class="social-arrow">→</div>
-                </a>
-            </div>
+        <div class="pricing-card__price">
+          <span class="price-sym">₹</span><span class="price-num">1,68,999</span><span class="price-per">/one-time</span>
         </div>
-    </section>
+        <ul class="feat-list">
+          <li class="yes">Everything in Pro</li>
+          <li class="yes">1-on-1 Coaching (4 Calls)</li>
+          <li class="yes">Done-For-You Setup</li>
+          <li class="yes">VIP Discord Channel</li>
+          <li class="yes">Priority Support</li>
+          <li class="yes">Advanced AI Agents</li>
+          <li class="yes">Business Launch Plan</li>
+          <li class="yes">90-Day Money Back</li>
+        </ul>
+        <a href="signup.html?plan=vip" class="btn btn--outline btn--block">Get VIP Access</a>
+      </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <div class="footer-logo">
-                        <img src="company-logo.png" alt="AI Freedom Formula" class="footer-logo-img" id="footer-logo">
-                        <span class="footer-logo-text">AI FREEDOM FORMULA</span>
-                    </div>
-                    <p class="footer-tagline">A subsidiary of TOP1WAY</p>
-                    <p class="footer-description">Building AI-powered freedom businesses across India.</p>
-                </div>
-                
-                <div class="footer-column">
-                    <h4 class="footer-heading">Quick Links</h4>
-                    <a href="#home" class="footer-link">Home</a>
-                    <a href="#courses" class="footer-link">Courses</a>
-                    <a href="#about" class="footer-link">About</a>
-                    <a href="login.html" class="footer-link">Login</a>
-                </div>
-                
-                <div class="footer-column">
-                    <h4 class="footer-heading">Legal</h4>
-                    <a href="#" class="footer-link">Privacy Policy</a>
-                    <a href="#" class="footer-link">Terms of Service</a>
-                    <a href="#" class="footer-link">Refund Policy</a>
-                </div>
-                
-                <div class="footer-column">
-                    <h4 class="footer-heading">Support</h4>
-                    <a href="#" class="footer-link">Contact Us</a>
-                    <a href="#" class="footer-link">FAQ</a>
-                    <a href="#" class="footer-link">Help Center</a>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2026 AI FREEDOM FORMULA - A TOP1WAY Company. All rights reserved. Made with ❤️ in India 🇮🇳</p>
-            </div>
+    </div>
+
+    <!-- Guarantee Bar -->
+    <div class="guarantee-bar">
+      <div class="guarantee-bar__icon">🛡️</div>
+      <div class="guarantee-bar__text">
+        <h4>100% Money-Back Guarantee</h4>
+        <p>If you don't see results in 90 days, we'll refund every rupee. No questions asked. Your investment is completely protected.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SOCIAL MEDIA (after guarantee)
+═══════════════════════════════════════════════ -->
+<section class="section bg-soft" id="social">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-title">Connect With Our Community</h2>
+      <p class="section-sub">Join thousands of AI entrepreneurs on their freedom journey</p>
+    </div>
+    <div class="social-grid">
+      <a href="#" class="social-card sc-yt"><span class="sc-icon">▶️</span><div class="sc-info"><strong>Subscribe on YouTube</strong><span>Free AI tutorials &amp; tips</span></div><span class="sc-arr">→</span></a>
+      <a href="#" class="social-card sc-ig"><span class="sc-icon">📷</span><div class="sc-info"><strong>Follow on Instagram</strong><span>Daily success stories</span></div><span class="sc-arr">→</span></a>
+      <a href="#" class="social-card sc-fb"><span class="sc-icon">👍</span><div class="sc-info"><strong>Follow on Facebook</strong><span>Community updates</span></div><span class="sc-arr">→</span></a>
+      <a href="#" class="social-card sc-wa"><span class="sc-icon">💬</span><div class="sc-info"><strong>Join WhatsApp Channel</strong><span>Instant notifications</span></div><span class="sc-arr">→</span></a>
+      <a href="#" class="social-card sc-tg"><span class="sc-icon">✈️</span><div class="sc-info"><strong>Join Telegram Channel</strong><span>Exclusive content</span></div><span class="sc-arr">→</span></a>
+      <a href="#" class="social-card sc-th"><span class="sc-icon">🧵</span><div class="sc-info"><strong>Follow on Threads</strong><span>Quick AI tips</span></div><span class="sc-arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     TESTIMONIALS — infinite scroll strip
+═══════════════════════════════════════════════ -->
+<section class="section bg-white" id="testimonials">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-title">Real People. Real Results. Real Freedom.</h2>
+      <p class="section-sub">See what our Indian students are saying</p>
+    </div>
+  </div>
+  <div class="tscroll-wrap">
+    <div class="tscroll-track">
+      <div class="tcard"><div class="tcard__stars">⭐⭐⭐⭐⭐</div><p>"I went from ₹25,000/month to ₹1,25,000/month in just 60 days. This course literally changed my life!"</p><div class="tcard__author"><div class="tcard__av">S</div><div><strong>Sneha Sharma</strong><span>Former Teacher → AI Consultant, Delhi</span></div></div></div>
+      <div class="tcard"><div class="tcard__stars">⭐⭐⭐⭐⭐</div><p>"Finally quit my soul-crushing job. Now I work 4 hours/day from Goa and make 3x more. Thank you!"</p><div class="tcard__author"><div class="tcard__av">R</div><div><strong>Rahul Patel</strong><span>Ex-Corporate → Free, Mumbai</span></div></div></div>
+      <div class="tcard"><div class="tcard__stars">⭐⭐⭐⭐⭐</div><p>"The community alone is worth 10x the price. These people actually care about your success."</p><div class="tcard__author"><div class="tcard__av">P</div><div><strong>Priya Reddy</strong><span>Freelancer → 6-Figure Business, Bangalore</span></div></div></div>
+      <div class="tcard"><div class="tcard__stars">⭐⭐⭐⭐⭐</div><p>"As a college student, I never thought I could make ₹50K/month. Now I'm earning while studying!"</p><div class="tcard__author"><div class="tcard__av">A</div><div><strong>Arjun Singh</strong><span>College Student → Entrepreneur, Pune</span></div></div></div>
+      <div class="tcard"><div class="tcard__stars">⭐⭐⭐⭐⭐</div><p>"Best decision of my career. The Hindi support made it so easy to understand and implement!"</p><div class="tcard__author"><div class="tcard__av">N</div><div><strong>Neha Gupta</strong><span>Homemaker → AI Business Owner, Jaipur</span></div></div></div>
+      <!-- duplicates for seamless loop -->
+      <div class="tcard"><div class="tcard__stars">⭐⭐⭐⭐⭐</div><p>"I went from ₹25,000/month to ₹1,25,000/month in just 60 days. This course literally changed my life!"</p><div class="tcard__author"><div class="tcard__av">S</div><div><strong>Sneha Sharma</strong><span>Former Teacher → AI Consultant, Delhi</span></div></div></div>
+      <div class="tcard"><div class="tcard__stars">⭐⭐⭐⭐⭐</div><p>"Finally quit my soul-crushing job. Now I work 4 hours/day from Goa and make 3x more. Thank you!"</p><div class="tcard__author"><div class="tcard__av">R</div><div><strong>Rahul Patel</strong><span>Ex-Corporate → Free, Mumbai</span></div></div></div>
+      <div class="tcard"><div class="tcard__stars">⭐⭐⭐⭐⭐</div><p>"The community alone is worth 10x the price. These people actually care about your success."</p><div class="tcard__author"><div class="tcard__av">P</div><div><strong>Priya Reddy</strong><span>Freelancer → 6-Figure Business, Bangalore</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     FAQ
+═══════════════════════════════════════════════ -->
+<section class="section bg-soft" id="faq">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p class="section-sub">Everything you need to know before joining</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">I have zero tech skills. Can I still succeed?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Absolutely! Our program is designed for complete beginners. No coding or prior tech experience needed. Over 60% of our successful students had no tech background. We teach everything step-by-step in simple Hindi and English.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How long until I see my first ₹50,000 month?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Most dedicated students see their first significant income within 30–60 days. Our fastest student hit ₹50K/month in 28 days. The 90-day guarantee exists because our system works — results are inevitable if you follow it consistently.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Is the money-back guarantee real? What's the catch?<span class="faq-icon">+</span></button>
+        <div class="faq-a">No catch at all. Complete the coursework, implement the strategies, and if you don't see results within 90 days we refund 100% — no hoops, no questions asked. We're confident because our system genuinely works.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What's the difference between Pro and VIP plans?<span class="faq-icon">+</span></button>
+        <div class="faq-a">Pro is the complete self-paced system with group coaching. VIP is our "done-with-you" tier — 4 personal 1-on-1 sessions, full AI business setup, and 24-hour priority support. VIP is for those who want results faster with expert hand-holding.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     ABOUT
+═══════════════════════════════════════════════ -->
+<section class="section bg-white" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual">
+        <!-- <img src="images/company.jpg" alt="Team" /> -->
+        <div class="about-placeholder"><span>🏢</span><p>AI Freedom Formula HQ</p></div>
+      </div>
+      <div class="about-copy">
+        <div class="badge badge--blue">About Us</div>
+        <h2>Your Partner in AI Freedom</h2>
+        <p>AI FREEDOM FORMULA is a proud subsidiary of <strong>TOP1WAY</strong>, India's leading education company dedicated to helping entrepreneurs harness AI to build location-independent businesses.</p>
+        <p>We've helped 500+ students break free from traditional employment and build sustainable, AI-powered income streams tailored specifically for the Indian market.</p>
+        <div class="about-stats">
+          <div class="about-stat"><strong>500+</strong><span>Success Stories</span></div>
+          <div class="about-stat"><strong>₹2Cr+</strong><span>Student Revenue</span></div>
+          <div class="about-stat"><strong>28+</strong><span>Indian States</span></div>
         </div>
-    </footer>
+        <div class="company-pill">🏢 A proud subsidiary of <strong>TOP1WAY</strong> — Empowering Indian entrepreneurs since 2020</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+<!-- ═══════════════════════════════════════════════
+     FINAL CTA
+═══════════════════════════════════════════════ -->
+<section class="section bg-dark cta-section">
+  <div class="container">
+    <div class="cta-inner">
+      <h2>The Question Is Not "Can I Do This?"</h2>
+      <p class="cta-sub">The question is: <em>"How much longer will I let fear hold me back?"</em></p>
 
-  const firebaseConfig = {
-     apiKey: "AIzaSyAFFqKzO3sCjZEAyYZCMoTTujkWP_rTDZw",
-  authDomain: "ai-freedom-formula.firebaseapp.com",
-  projectId: "ai-freedom-formula",
-  storageBucket: "ai-freedom-formula.firebasestorage.app",
-  messagingSenderId: "239889566140",
-  appId: "1:239889566140:web:b468abd706b109ec2cc3b9",
-  measurementId: "G-D5EQ4W0LJY"
-  };
+      <div class="cta-urgency">
+        <div class="cta-urg-item"><span>⏰</span><span>Offer ends in <strong id="cta-timer">00:00:00</strong></span></div>
+        <span class="cta-urg-div">|</span>
+        <div class="cta-urg-item"><span>👥</span><span>Only <strong>17 spots remaining</strong> at this price</span></div>
+      </div>
 
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
+      <a href="signup.html" class="btn btn--secondary btn--xl pulse-anim">
+        🚀 Join the AI Community Now — FREE
+      </a>
 
-  console.log("Firebase Connected ✅");
+      <div class="cta-trust">
+        <span>✅ 90-Day Money-Back Guarantee</span>
+        <span>✅ Instant Access</span>
+        <span>✅ Join 500+ Winners</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col footer-col--wide">
+        <span class="footer-brand">AI FREEDOM FORMULA</span>
+        <p class="footer-tag">A subsidiary of TOP1WAY</p>
+        <p class="footer-desc">Building AI-powered freedom businesses across India. Your success is our mission.</p>
+        <p class="footer-email-lbl">📧 Get FREE AI tips weekly:</p>
+        <form class="footer-form" id="footer-lead-form">
+          <input type="email" placeholder="your@email.com" required />
+          <button type="submit">🚀 Get Access</button>
+        </form>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="#home">Home</a>
+        <a href="#courses">Courses</a>
+        <a href="#about">About</a>
+        <a href="login.html">Login</a>
+        <a href="signup.html">Sign Up Free</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Refund Policy</a>
+        <a href="#">Disclaimer</a>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a href="#">Contact Us</a>
+        <a href="#faq">FAQ</a>
+        <a href="#">Help Center</a>
+        <a href="#">Community</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 AI FREEDOM FORMULA — A TOP1WAY Company. All rights reserved. Made with ❤️ in India 🇮🇳</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════
+     LEAD POPUP
+═══════════════════════════════════════════════ -->
+<div class="popup-overlay" id="lead-popup" aria-hidden="true">
+  <div class="popup-box" role="dialog" aria-modal="true">
+    <button class="popup-close" id="popup-close" aria-label="Close">×</button>
+    <div class="popup-badge">🎁 FREE GIFT — Worth ₹5,000</div>
+    <h2 class="popup-title">Get Your Free AI Masterclass</h2>
+    <p class="popup-desc">Enter your details and get instant access to our premium AI Masterclass — completely FREE. Learn to make ₹50K/month in the next 30 days.</p>
+    <form class="popup-form" id="popup-lead-form">
+      <input type="text" id="popup-name" placeholder="Your Name" required />
+      <input type="email" id="popup-email" placeholder="Your Best Email" required />
+      <button type="submit" class="btn btn--secondary btn--block">🚀 Get FREE Access Now!</button>
+    </form>
+    <p class="popup-privacy">🔒 100% Free. No spam. Unsubscribe anytime.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     SCRIPTS (all inline — no extra files needed)
+═══════════════════════════════════════════════ -->
+<script>
+/* ── Auth state ──────────────────────────────────── */
+function getToken() { return localStorage.getItem('aiff_token'); }
+function logout()   { localStorage.removeItem('aiff_token'); localStorage.removeItem('aiff_user'); window.location.reload(); }
+
+(function updateNav() {
+  var loggedIn = !!getToken();
+  var g = document.getElementById('nav-guest');
+  var a = document.getElementById('nav-auth');
+  if (g) g.style.display = loggedIn ? 'none' : 'flex';
+  if (a) a.style.display = loggedIn ? 'flex' : 'none';
+})();
+
+/* ── Hamburger ───────────────────────────────────── */
+var hamburger = document.getElementById('hamburger');
+var navLinks  = document.getElementById('nav-links');
+
+hamburger.addEventListener('click', function(e) {
+  e.stopPropagation();
+  var isOpen = navLinks.classList.toggle('open');
+  hamburger.classList.toggle('is-open', isOpen);
+  hamburger.setAttribute('aria-expanded', isOpen);
+});
+
+navLinks.addEventListener('click', function(e) {
+  if (e.target.tagName === 'A') {
+    navLinks.classList.remove('open');
+    hamburger.classList.remove('is-open');
+    hamburger.setAttribute('aria-expanded', false);
+  }
+});
+
+document.addEventListener('click', function(e) {
+  if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+    navLinks.classList.remove('open');
+    hamburger.classList.remove('is-open');
+    hamburger.setAttribute('aria-expanded', false);
+  }
+});
+
+/* ── Countdown helper ────────────────────────────── */
+function pad(n) { return String(n).padStart(2,'0'); }
+
+function getEndTime(key, hrs) {
+  var v = localStorage.getItem(key);
+  if (!v || parseInt(v) <= Date.now()) {
+    v = String(Date.now() + hrs * 3600000);
+    localStorage.setItem(key, v);
+  }
+  return parseInt(v);
+}
+
+var flashEnd = getEndTime('aiff_flash', 23);
+var ctaEnd   = getEndTime('aiff_cta',   47);
+
+function tick() {
+  var fDiff = Math.max(0, flashEnd - Date.now());
+  var fh = Math.floor(fDiff / 3600000);
+  var fm = Math.floor((fDiff % 3600000) / 60000);
+  var fs = Math.floor((fDiff % 60000) / 1000);
+  var hEl = document.getElementById('cd-hours');
+  var mEl = document.getElementById('cd-mins');
+  var sEl = document.getElementById('cd-secs');
+  if (hEl) hEl.textContent = pad(fh);
+  if (mEl) mEl.textContent = pad(fm);
+  if (sEl) sEl.textContent = pad(fs);
+
+  var cDiff = Math.max(0, ctaEnd - Date.now());
+  var ch = Math.floor(cDiff / 3600000);
+  var cm = Math.floor((cDiff % 3600000) / 60000);
+  var cs = Math.floor((cDiff % 60000) / 1000);
+  var ctaEl = document.getElementById('cta-timer');
+  if (ctaEl) ctaEl.textContent = pad(ch) + ':' + pad(cm) + ':' + pad(cs);
+}
+tick();
+setInterval(tick, 1000);
+
+/* ── Sticky header ───────────────────────────────── */
+window.addEventListener('scroll', function() {
+  document.getElementById('header').classList.toggle('scrolled', window.scrollY > 10);
+}, { passive: true });
+
+/* ── FAQ accordion ───────────────────────────────── */
+document.querySelectorAll('.faq-q').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var item = btn.closest('.faq-item');
+    var wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+/* ── Popup ───────────────────────────────────────── */
+function openPopup()  { document.getElementById('lead-popup').classList.add('active'); }
+function closePopup() { document.getElementById('lead-popup').classList.remove('active'); }
+
+document.getElementById('popup-close').addEventListener('click', closePopup);
+document.getElementById('lead-popup').addEventListener('click', function(e) { if (e.target === this) closePopup(); });
+
+if (!localStorage.getItem('aiff_popup_seen') && !getToken()) {
+  setTimeout(openPopup, 8000);
+}
+
+document.getElementById('popup-lead-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  var btn = this.querySelector('button[type="submit"]');
+  btn.textContent = '⏳ Submitting…'; btn.disabled = true;
+  try {
+    await fetch('/api/leads', { method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ name: document.getElementById('popup-name').value, email: document.getElementById('popup-email').value, source:'popup' }) });
+  } catch(_) {}
+  localStorage.setItem('aiff_popup_seen','1');
+  document.querySelector('.popup-box').innerHTML = '<div style="text-align:center;padding:48px 20px"><div style="font-size:3.5rem;margin-bottom:16px">🎉</div><h3 style="font-size:1.6rem;font-weight:800;margin-bottom:8px">You\'re In!</h3><p style="color:#64748B;line-height:1.7">Check your inbox for your <strong>Free AI Masterclass</strong> — it\'s on its way! 🚀</p></div>';
+  setTimeout(closePopup, 3000);
+});
+
+/* ── Footer form ─────────────────────────────────── */
+document.getElementById('footer-lead-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  try { await fetch('/api/leads', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ email: this.querySelector('input').value, source:'footer' }) }); } catch(_) {}
+  this.innerHTML = '<p style="color:#10B981;font-weight:700;padding:10px 0">✅ You\'re on the list! Check your inbox.</p>';
+});
 </script>
 
-    <script src="script.js"></script>
 </body>
 </html>
