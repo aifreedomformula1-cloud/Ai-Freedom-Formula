@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Watch Course — AI Freedom Formula</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="styles.css" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body class="player-body">
+
+<!-- ══ PLAYER HEADER ══ -->
+<header class="player-header">
+  <nav class="player-nav">
+    <a href="index.html" class="brand">
+      <span class="brand-icon">⚡</span>
+      <span class="brand-name">AI<span class="brand-accent">FREEDOM</span></span>
+    </a>
+    <div class="player-course-title" id="player-course-title">Loading course…</div>
+    <div class="player-header-actions">
+      <div class="player-progress-pill">
+        <span id="progress-text">0%</span> Complete
+      </div>
+      <a href="courses.html" class="btn btn-sm btn-ghost">← All Courses</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu" style="display:none;">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<!-- ══ PLAYER LAYOUT ══ -->
+<div class="player-layout" id="player-layout">
+
+  <!-- ═ MAIN VIDEO AREA ═ -->
+  <main class="player-main">
+
+    <!-- Video player -->
+    <div class="video-area" id="video-area">
+      <div class="video-wrap" id="video-wrap">
+        <!-- YouTube embed or placeholder -->
+        <div class="video-placeholder" id="video-placeholder">
+          <div class="vp-content">
+            <div class="vp-play-icon">▶</div>
+            <h3 id="vp-lesson-title">Select a lesson to start watching</h3>
+            <p id="vp-lesson-sub">Click any lesson from the sidebar to begin</p>
+          </div>
+        </div>
+        <!-- Actual iframe will be injected here when a lesson has a real video -->
+        <iframe id="video-iframe" style="display:none;" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- Lesson info -->
+    <div class="lesson-info" id="lesson-info">
+      <div class="li-header">
+        <div>
+          <div class="li-section-tag" id="li-section">Loading…</div>
+          <h2 class="li-title" id="li-title">Select a lesson</h2>
+        </div>
+        <div class="li-actions">
+          <button class="li-btn" id="btn-prev" onclick="navigate(-1)">← Prev</button>
+          <button class="li-btn li-btn--primary" id="btn-next" onclick="navigate(1)">Next →</button>
+        </div>
+      </div>
+      <p class="li-desc" id="li-desc">Click a lesson from the right panel to start learning.</p>
+      <div class="li-tags" id="li-tags"></div>
+
+      <!-- Resources -->
+      <div class="li-resources" id="li-resources" style="display:none">
+        <h4>📎 Lesson Resources</h4>
+        <div id="li-resources-list"></div>
+      </div>
+    </div>
+
+    <!-- Course overview tabs (shows on first load) -->
+    <div class="course-overview" id="course-overview">
+      <div class="co-tabs">
+        <button class="co-tab active" data-tab="about">About This Course</button>
+        <button class="co-tab" data-tab="outcomes">What You'll Learn</button>
+        <button class="co-tab" data-tab="community">Community</button>
+      </div>
+      <div class="co-content active" id="tab-about">
+        <div class="co-inner" id="about-content">
+          <!-- filled by JS -->
+        </div>
+      </div>
+      <div class="co-content" id="tab-outcomes">
+        <div class="co-inner" id="outcomes-content"></div>
+      </div>
+      <div class="co-content" id="tab-community">
+        <div class="co-inner">
+          <div class="community-cta">
+            <span class="cc-icon">👥</span>
+            <h3>Join Our WhatsApp Community</h3>
+            <p>10,000+ students sharing wins, resources, and support. Ask questions, share progress, find accountability partners.</p>
+            <a href="#" class="btn btn-fire">Join WhatsApp Group →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ═ SIDEBAR: Lesson List ═ -->
+  <aside class="player-sidebar" id="player-sidebar">
+    <div class="sidebar-header">
+      <h3>Course Content</h3>
+      <div class="sidebar-progress">
+        <div class="sp-bar"><div class="sp-fill" id="sp-fill" style="width:0%"></div></div>
+        <span id="sp-count">0 / 0 lessons</span>
+      </div>
+    </div>
+    <div class="lesson-list" id="lesson-list">
+      <!-- filled by JS -->
+    </div>
+    <!-- Enroll CTA in sidebar -->
+    <div class="sidebar-cta">
+      <p>Loving the course? Share with a friend!</p>
+      <a href="index.html#enroll" class="btn btn-fire btn-block">🎁 Enroll Free & Get All Perks</a>
+    </div>
+  </aside>
+
+</div>
+
+<!-- Sidebar toggle for mobile -->
+<button class="sidebar-toggle" id="sidebar-toggle" onclick="toggleSidebar()" aria-label="Toggle lessons">
+  📋 Lessons
+</button>
+
+<script>
+/* ═══════════════════════════════════════════
+   COURSE DATA
+═══════════════════════════════════════════ */
+const COURSES = {
+  1: {
+    title: "AI Fundamentals Masterclass",
+    emoji: "🤖",
+    desc: "Start your AI journey right. Understand ChatGPT, Gemini, Claude, Midjourney and 10+ tools. Build your first AI-powered workflow by lesson 5.",
+    outcomes: ["How AI tools actually work", "Top 10 free AI tools setup walkthrough", "Your first automated workflow", "AI prompt writing mastery", "Real-world AI use cases for India"],
+    sections: [
+      {
+        title: "Module 1: AI Foundations",
+        lessons: [
+          { title: "Welcome & What You'll Achieve", duration: "8:22", desc: "An overview of the entire course and what you'll be able to do by the end.", tags: ["Introduction"], video: "" },
+          { title: "What is AI? (Simple Explanation)", duration: "12:15", desc: "Demystify AI. Understand what it is, what it isn't, and why it's the biggest opportunity of your lifetime.", tags: ["Concept"], video: "" },
+          { title: "The AI Landscape in 2025", duration: "9:40", desc: "Map of all major AI tools and where they fit together. Know which tools to use for what.", tags: ["Overview"], video: "" },
+          { title: "Setting Up Your Free AI Toolkit", duration: "18:30", desc: "Step-by-step setup of ChatGPT, Gemini, Claude, and 5 other free tools on your phone and laptop.", tags: ["Setup", "Practical"], video: "" },
+        ]
+      },
+      {
+        title: "Module 2: ChatGPT Mastery",
+        lessons: [
+          { title: "ChatGPT Interface Deep-Dive", duration: "14:50", desc: "Every button, every feature. Get comfortable with the platform you'll use most.", tags: ["ChatGPT"], video: "" },
+          { title: "Prompt Engineering: Beginner Level", duration: "22:10", desc: "Learn to write prompts that get 10x better results. The skill no one teaches properly.", tags: ["Prompts", "Key Skill"], video: "" },
+          { title: "Prompt Engineering: Advanced Techniques", duration: "19:45", desc: "Chain-of-thought prompting, role-playing, and formatting techniques for professional outputs.", tags: ["Prompts", "Advanced"], video: "" },
+          { title: "ChatGPT for Writing & Content", duration: "16:20", desc: "Emails, blog posts, social media captions — produce a week of content in one hour.", tags: ["Writing"], video: "" },
+          { title: "ChatGPT for Research & Analysis", duration: "11:35", desc: "Use AI as your personal research assistant. Analyze data, summarize reports, find insights.", tags: ["Research"], video: "" },
+        ]
+      },
+      {
+        title: "Module 3: AI Image & Creative Tools",
+        lessons: [
+          { title: "Introduction to AI Image Generation", duration: "10:25", desc: "Midjourney, DALL-E, Stable Diffusion — what each does and when to use them.", tags: ["Images"], video: "" },
+          { title: "Midjourney: Create Stunning Images", duration: "24:00", desc: "Complete Midjourney tutorial. Create logos, thumbnails, product images, social media graphics.", tags: ["Midjourney", "Practical"], video: "" },
+          { title: "Canva + AI: Design Like a Pro", duration: "15:40", desc: "Combine Canva's AI features with external tools for professional design without design skills.", tags: ["Design", "Canva"], video: "" },
+          { title: "AI Video Tools Overview", duration: "13:15", desc: "Runway, Sora, HeyGen — create professional video content with AI. The new era of content creation.", tags: ["Video"], video: "" },
+        ]
+      },
+      {
+        title: "Module 4: Building Your First Workflow",
+        lessons: [
+          { title: "What is a Workflow? (Explained Simply)", duration: "9:55", desc: "Understand the concept of connecting AI tools together to automate tasks.", tags: ["Automation", "Concept"], video: "" },
+          { title: "Build a Content Creation Workflow", duration: "28:20", desc: "Step by step: create a system that produces Instagram posts, YouTube scripts, and blog content automatically.", tags: ["Workflow", "Content", "Practical"], video: "" },
+          { title: "Build an Email Response Workflow", duration: "18:45", desc: "Never spend more than 5 minutes on emails again. AI drafts, you approve.", tags: ["Email", "Workflow"], video: "" },
+          { title: "Sharing Your Workflows for Income", duration: "16:30", desc: "How to sell your AI workflows to businesses. Your first income from AI.", tags: ["Income", "Business"], video: "" },
+          { title: "Course Recap + Your Next Steps", duration: "11:00", desc: "Review everything you've learned and get your personalized action plan for the next 30 days.", tags: ["Summary", "Action Plan"], video: "" },
+        ]
+      }
+    ]
+  },
+  2: {
+    title: "AI Freelancing: ₹50K/Month Blueprint",
+    emoji: "💰",
+    desc: "The complete A-Z system for building a profitable AI freelancing career. Find clients, set prices, deliver projects, scale to ₹1L+/month.",
+    outcomes: ["Top 5 AI freelancing niches", "Get first client in 30 days", "Write winning proposals", "Premium pricing strategy", "Scale from solo to agency"],
+    sections: [
+      {
+        title: "Module 1: Freelancing Fundamentals",
+        lessons: [
+          { title: "Why AI Freelancing is the Best Opportunity in India Right Now", duration: "12:00", desc: "The data behind why AI freelancers are earning 3-5x more than traditional freelancers.", tags: ["Introduction"], video: "" },
+          { title: "Choose Your Niche: The 5 Best AI Freelancing Services", duration: "19:30", desc: "Content writing, social media, ads, automation, consulting — which is right for you?", tags: ["Niche"], video: "" },
+          { title: "Building Your Portfolio from Scratch", duration: "16:45", desc: "Create compelling portfolio pieces without any clients. Get your first 5 samples done today.", tags: ["Portfolio"], video: "" },
+          { title: "Setting Up Your Professional Profiles", duration: "22:10", desc: "Fiverr, Upwork, LinkedIn, freelancing.in — complete profile optimization guide.", tags: ["Setup", "Platforms"], video: "" },
+        ]
+      },
+      {
+        title: "Module 2: Finding & Winning Clients",
+        lessons: [
+          { title: "The Cold Outreach Formula That Actually Works", duration: "25:00", desc: "Exact message templates that get replies. We share our 40% response rate scripts.", tags: ["Outreach", "Key Skill"], video: "" },
+          { title: "LinkedIn Prospecting with AI", duration: "18:20", desc: "Use AI to find ideal clients on LinkedIn and craft personalized outreach at scale.", tags: ["LinkedIn", "AI"], video: "" },
+          { title: "WhatsApp & Telegram for Client Acquisition", duration: "14:50", desc: "India-specific strategy using the most popular messaging apps for business development.", tags: ["WhatsApp", "India"], video: "" },
+          { title: "Writing Proposals That Win", duration: "21:35", desc: "Our proposal template has a 45% close rate. Copy it exactly.", tags: ["Proposals", "Key Skill"], video: "" },
+          { title: "Discovery Calls: How to Close ₹30K+ Projects", duration: "17:00", desc: "Sales without being salesy. How to run a discovery call that naturally leads to a 'yes'.", tags: ["Sales", "Calls"], video: "" },
+        ]
+      },
+      {
+        title: "Module 3: Delivering Exceptional Work",
+        lessons: [
+          { title: "Project Management for Freelancers", duration: "11:30", desc: "Set up a simple system to manage multiple clients without dropping balls.", tags: ["Systems"], video: "" },
+          { title: "Using AI to Deliver 10x Faster", duration: "24:15", desc: "Specific AI workflows for each service type. Deliver in hours what used to take days.", tags: ["AI", "Productivity"], video: "" },
+          { title: "Client Communication Templates", duration: "13:40", desc: "Every email you'll ever need to send to a client — pre-written and ready to use.", tags: ["Communication"], video: "" },
+          { title: "Handling Revisions and Difficult Clients", duration: "10:55", desc: "Scripts and strategies for the most common client friction points.", tags: ["Client Relations"], video: "" },
+        ]
+      },
+      {
+        title: "Module 4: Scaling to ₹1L+/Month",
+        lessons: [
+          { title: "Retainer Clients: Stable Monthly Income", duration: "18:00", desc: "How to convert project clients into retainer clients paying ₹15,000–₹40,000/month.", tags: ["Retainers", "Income"], video: "" },
+          { title: "Raising Your Rates Strategically", duration: "12:20", desc: "When and how to raise your rates without losing clients.", tags: ["Pricing"], video: "" },
+          { title: "Building a Freelancing Agency", duration: "22:45", desc: "Hire other AI freelancers, manage the business, earn from their work.", tags: ["Agency", "Scaling"], video: "" },
+          { title: "Passive Income Streams for Freelancers", duration: "16:30", desc: "Courses, templates, tools — how to make money while you sleep.", tags: ["Passive Income"], video: "" },
+          { title: "Your 90-Day Roadmap to ₹1 Lakh/Month", duration: "14:15", desc: "Day by day action plan. Follow this and you will hit ₹1L/month within 90 days.", tags: ["Action Plan", "Roadmap"], video: "" },
+        ]
+      }
+    ]
+  },
+  3: {
+    title: "Content Empire with AI",
+    emoji: "📱",
+    desc: "Build a massive content brand on Instagram, YouTube & LinkedIn using AI. Grow to 50K+ followers and monetize with brand deals, digital products, and affiliate income.",
+    outcomes: ["AI content strategy for viral growth", "30 days of content in 3 hours", "Monetization from day 1", "Build faceless YouTube channel", "Brand deal negotiation"],
+    sections: [
+      {
+        title: "Module 1: Content Strategy",
+        lessons: [
+          { title: "Why Content is the Most Powerful Asset in 2025", duration: "13:20", desc: "The economics of attention and why content creators win.", tags: ["Introduction"], video: "" },
+          { title: "Picking Your Content Niche (The Formula)", duration: "17:40", desc: "The intersection of passion, profit, and platform — how to find your perfect niche.", tags: ["Niche"], video: "" },
+          { title: "Content Pillars & Brand Voice", duration: "14:55", desc: "Build a consistent brand that attracts and retains followers.", tags: ["Branding"], video: "" },
+          { title: "Platform Deep-Dive: Instagram vs YouTube vs LinkedIn", duration: "20:10", desc: "Each platform's algorithm, content format, and monetization path explained.", tags: ["Platforms"], video: "" },
+        ]
+      },
+      {
+        title: "Module 2: Creating Content with AI",
+        lessons: [
+          { title: "AI-Powered Content Ideation", duration: "16:30", desc: "Generate 100 content ideas in 10 minutes using AI prompting strategies.", tags: ["Ideation", "AI"], video: "" },
+          { title: "Writing Viral Captions & Scripts with AI", duration: "22:00", desc: "The hook formula, the body structure, and the CTA that drives engagement.", tags: ["Writing", "Key Skill"], video: "" },
+          { title: "Creating Thumbnails with AI (Midjourney + Canva)", duration: "19:45", desc: "Thumbnails that get clicked. Proven formulas + AI tools to execute them fast.", tags: ["Thumbnails", "Design"], video: "" },
+          { title: "AI Voiceover & Editing for YouTube", duration: "24:30", desc: "Create professional YouTube videos without showing your face using AI voiceovers.", tags: ["YouTube", "Faceless"], video: "" },
+          { title: "Instagram Reels Strategy with AI", duration: "18:20", desc: "The reel format that consistently goes viral. Batch create 30 reels in one day.", tags: ["Instagram", "Reels"], video: "" },
+          { title: "LinkedIn Content for B2B Income", duration: "15:10", desc: "Build a professional audience that pays for services. LinkedIn's hidden goldmine.", tags: ["LinkedIn", "B2B"], video: "" },
+        ]
+      },
+      {
+        title: "Module 3: Growing Your Audience",
+        lessons: [
+          { title: "The Algorithm Decoded", duration: "13:50", desc: "How Instagram, YouTube, and LinkedIn algorithms work. What to do and what to avoid.", tags: ["Algorithm"], video: "" },
+          { title: "Collaboration & Cross-Promotion Strategy", duration: "11:20", desc: "Partner with other creators to grow 3x faster with zero ad spend.", tags: ["Collabs", "Growth"], video: "" },
+          { title: "Community Building: Comments, DMs & Engagement", duration: "16:45", desc: "Turn passive followers into active community members who buy from you.", tags: ["Community"], video: "" },
+          { title: "Paid Growth: When and How to Use Ads", duration: "20:30", desc: "Boost the right content to the right audience. ₹500 ad spends that generate ₹10,000+.", tags: ["Ads", "Growth"], video: "" },
+        ]
+      },
+      {
+        title: "Module 4: Monetization",
+        lessons: [
+          { title: "Monetization Overview: 7 Ways to Make Money", duration: "14:00", desc: "Brand deals, digital products, affiliate, memberships, consulting, courses, and more.", tags: ["Monetization"], video: "" },
+          { title: "Landing Your First Brand Deal", duration: "22:15", desc: "Pitch deck template, pricing guide, and negotiation scripts for brand partnerships.", tags: ["Brand Deals", "Key Skill"], video: "" },
+          { title: "Selling Digital Products with Your Audience", duration: "19:40", desc: "Create and sell ebooks, templates, presets, and courses to your followers.", tags: ["Digital Products"], video: "" },
+          { title: "Affiliate Marketing for Content Creators", duration: "12:55", desc: "Promote relevant AI tools and earn 20-40% commissions on every sale.", tags: ["Affiliate"], video: "" },
+          { title: "Scaling to ₹3L+/Month: The Roadmap", duration: "17:30", desc: "The exact path from 1K followers to ₹3L/month. Real numbers, real strategy.", tags: ["Scaling", "Action Plan"], video: "" },
+          { title: "Building a Team for Your Content Empire", duration: "13:15", desc: "Hire, delegate, and systematize so your income grows without your time.", tags: ["Team", "Systems"], video: "" },
+        ]
+      }
+    ]
+  },
+  4: {
+    title: "AI eCommerce Automation",
+    emoji: "🏪",
+    desc: "Launch a profitable eCommerce business using AI. Works with Meesho, Shopify, Amazon, Flipkart and more.",
+    outcomes: ["AI product research", "AI-written listings that rank", "Automated customer service", "Scaling with AI ads", "Multi-platform selling"],
+    sections: [
+      { title: "Module 1: eCommerce Fundamentals", lessons: [
+        { title: "The Indian eCommerce Landscape in 2025", duration: "10:20", desc: "Meesho, Flipkart, Amazon, D2C — which platform is right for your business?", tags: ["Overview"], video: "" },
+        { title: "Finding Winning Products with AI", duration: "23:45", desc: "Use AI to analyze trends, competition, and margins. Find products before they go viral.", tags: ["Products", "Key Skill"], video: "" },
+        { title: "Setting Up Your Store", duration: "18:30", desc: "Complete store setup on Meesho and Shopify with AI-optimized branding.", tags: ["Setup"], video: "" },
+      ]},
+      { title: "Module 2: AI-Powered Listings", lessons: [
+        { title: "Writing Product Titles & Descriptions with AI", duration: "16:40", desc: "SEO-optimized listings that rank on page 1 and convert visitors to buyers.", tags: ["Copywriting", "SEO"], video: "" },
+        { title: "AI Product Photography & Enhancement", duration: "14:15", desc: "Turn ordinary product photos into professional e-commerce images using free AI tools.", tags: ["Photography", "AI"], video: "" },
+        { title: "Pricing Strategy with AI Analysis", duration: "12:50", desc: "Analyze competitors, understand margins, and price for maximum profit.", tags: ["Pricing"], video: "" },
+      ]},
+      { title: "Module 3: Marketing & Sales", lessons: [
+        { title: "AI-Powered Facebook & Instagram Ads", duration: "26:00", desc: "Create, test, and optimize ads using AI. Our formula for ₹500 → ₹5,000 returns.", tags: ["Ads", "Marketing"], video: "" },
+        { title: "WhatsApp Marketing Automation", duration: "17:35", desc: "Build a WhatsApp broadcast system that nurtures leads and drives repeat purchases.", tags: ["WhatsApp", "India"], video: "" },
+        { title: "Customer Service with AI Chatbots", duration: "15:20", desc: "Set up AI chatbots on WhatsApp and website that answer questions 24/7.", tags: ["Chatbots", "Automation"], video: "" },
+      ]},
+      { title: "Module 4: Scaling", lessons: [
+        { title: "Inventory Management with AI", duration: "11:45", desc: "Never run out of stock or overstock again. AI forecasting for Indian demand patterns.", tags: ["Operations"], video: "" },
+        { title: "Expanding to Multiple Platforms", duration: "19:20", desc: "Sell on Meesho, Flipkart, Amazon, and your own D2C website simultaneously.", tags: ["Scaling", "Platforms"], video: "" },
+        { title: "Building a ₹1Cr+ eCommerce Business", duration: "22:10", desc: "The scaling playbook. Hire, automate, and build a brand that sells itself.", tags: ["Scaling", "Roadmap"], video: "" },
+      ]}
+    ]
+  },
+  5: {
+    title: "AI Consulting Business",
+    emoji: "📊",
+    desc: "Command ₹50,000–₹2,00,000 per project as a sought-after AI consultant. Land SMEs, startups, and enterprises as clients.",
+    outcomes: ["Audit businesses for AI", "Proposal and pricing for corporates", "Deliver high-ticket AI projects", "Build retainer consulting", "Scale to agency"],
+    sections: [
+      { title: "Module 1: Consulting Fundamentals", lessons: [
+        { title: "What Do AI Consultants Actually Do?", duration: "12:40", desc: "The exact services Indian businesses are paying for right now.", tags: ["Overview"], video: "" },
+        { title: "The ₹1 Crore Consulting Market in India", duration: "15:20", desc: "Industry analysis: which sectors are spending most on AI consulting and why.", tags: ["Market"], video: "" },
+        { title: "Building Your Consulting Framework", duration: "19:30", desc: "Your signature methodology — what makes your approach unique and valuable.", tags: ["Framework"], video: "" },
+      ]},
+      { title: "Module 2: Getting Clients", lessons: [
+        { title: "AI Business Audit: Your Entry Product", duration: "24:15", desc: "How to offer a ₹10,000–₹25,000 AI audit that naturally leads to larger projects.", tags: ["Services", "Key Skill"], video: "" },
+        { title: "Corporate Client Acquisition Strategy", duration: "21:40", desc: "LinkedIn, referrals, industry events — the three channels that generate enterprise clients.", tags: ["Acquisition"], video: "" },
+        { title: "Writing Corporate Proposals", duration: "18:55", desc: "Our ₹5 lakh proposal template. Professional, persuasive, and formatted for decision-makers.", tags: ["Proposals", "Key Skill"], video: "" },
+      ]},
+      { title: "Module 3: Delivering Consulting Projects", lessons: [
+        { title: "AI Implementation Roadmap Template", duration: "16:30", desc: "Give every client a clear, professional roadmap for AI adoption in their business.", tags: ["Delivery", "Templates"], video: "" },
+        { title: "Managing Corporate Stakeholders", duration: "14:10", desc: "Navigate decision-makers, IT teams, and end-users in large organizations.", tags: ["Stakeholders"], video: "" },
+        { title: "Building Case Studies That Sell", duration: "12:45", desc: "Document your wins. A single strong case study can generate ₹10L+ in new business.", tags: ["Marketing"], video: "" },
+      ]},
+      { title: "Module 4: Scaling Your Practice", lessons: [
+        { title: "Retainer Clients for Predictable Income", duration: "17:00", desc: "Convert one-time projects into ₹50,000–₹1,50,000/month retainers.", tags: ["Retainers"], video: "" },
+        { title: "Hiring & Training AI Consultants", duration: "20:15", desc: "Build a team. Double your revenue without doubling your work.", tags: ["Hiring", "Scaling"], video: "" },
+        { title: "Your Path to ₹1 Crore/Year Consulting Business", duration: "18:30", desc: "The numbers, the milestones, and the daily actions that get you to ₹1Cr/year.", tags: ["Roadmap"], video: "" },
+      ]}
+    ]
+  },
+  6: {
+    title: "Build AI Agents & Automation",
+    emoji: "🧬",
+    desc: "Create powerful AI agents using no-code tools. Build automation systems that run your business 24/7 without you.",
+    outcomes: ["n8n, Make, Zapier + AI", "Build chatbots that close sales", "Automate lead gen & follow-ups", "Sell automation as a service", "Build AI agency"],
+    sections: [
+      { title: "Module 1: Automation Basics", lessons: [
+        { title: "What Are AI Agents? (Plain English)", duration: "11:30", desc: "Understand the difference between AI tools and AI agents. Why agents are the future.", tags: ["Introduction"], video: "" },
+        { title: "No-Code Automation Tools Overview", duration: "14:20", desc: "n8n, Make, Zapier compared. Which tool for which job.", tags: ["Tools"], video: "" },
+        { title: "Setting Up n8n (Free & Powerful)", duration: "22:00", desc: "Complete n8n setup on your computer. Your automation HQ is ready.", tags: ["Setup", "n8n"], video: "" },
+        { title: "Your First Automation in 15 Minutes", duration: "18:45", desc: "Build a simple automation that saves you 2 hours per week. Feel the power.", tags: ["Practical"], video: "" },
+      ]},
+      { title: "Module 2: AI + Automation Integration", lessons: [
+        { title: "Connecting ChatGPT to Your Automations", duration: "20:10", desc: "Use GPT-4 as the brain of your automations. Process data, generate content, make decisions.", tags: ["ChatGPT", "Integration"], video: "" },
+        { title: "Building an AI Email Management System", duration: "23:30", desc: "AI reads, categorizes, drafts, and sends emails on your behalf. Zero inbox overwhelm.", tags: ["Email", "Automation"], video: "" },
+        { title: "AI Lead Generation Automation", duration: "19:15", desc: "Automatically find leads on LinkedIn, scrape their info, and send personalized outreach.", tags: ["Lead Gen", "Key Skill"], video: "" },
+        { title: "Social Media Auto-Posting System", duration: "16:40", desc: "Content goes from idea to published across all platforms automatically.", tags: ["Social Media", "Content"], video: "" },
+      ]},
+      { title: "Module 3: Building Chatbots", lessons: [
+        { title: "WhatsApp Chatbot with AI Brain", duration: "28:00", desc: "Build a WhatsApp bot that answers customer questions, captures leads, and books appointments.", tags: ["WhatsApp", "Chatbot", "Key Skill"], video: "" },
+        { title: "Website Chatbot That Converts Visitors", duration: "21:45", desc: "Deploy an AI chatbot on any website that qualifies leads and books sales calls automatically.", tags: ["Website", "Chatbot"], video: "" },
+        { title: "Customer Service Bot for eCommerce", duration: "17:20", desc: "Handle 80% of support queries automatically. Integrate with Shopify and WooCommerce.", tags: ["Customer Service", "eCommerce"], video: "" },
+      ]},
+      { title: "Module 4: Selling Automation as a Service", lessons: [
+        { title: "The AI Automation Agency Model", duration: "15:30", desc: "How to package and sell automation services to businesses for ₹30,000–₹1,00,000 per project.", tags: ["Business Model"], video: "" },
+        { title: "Finding Businesses That Need Automation", duration: "18:00", desc: "Industries and company sizes that spend most on automation consulting.", tags: ["Client Acquisition"], video: "" },
+        { title: "Demonstration Frameworks That Close Clients", duration: "20:25", desc: "Live demo templates that make prospects pull out their wallets on the spot.", tags: ["Sales", "Demo"], video: "" },
+        { title: "Productizing Your Automations", duration: "16:10", desc: "Turn custom builds into templated products you can sell once and deploy many times.", tags: ["Products", "Scaling"], video: "" },
+        { title: "Building a ₹50L+/Year Automation Agency", duration: "22:35", desc: "Hire, systemize, and scale. The complete blueprint for a 7-figure automation business.", tags: ["Agency", "Scaling", "Roadmap"], video: "" },
+        { title: "Future of AI Agents: What's Coming", duration: "14:50", desc: "Stay ahead of the curve. The next 2 years in AI agents and how to position yourself.", tags: ["Future", "Trends"], video: "" },
+      ]}
+    ]
+  }
+};
+
+/* ═══════════════════════════════════════════
+   PLAYER APP
+═══════════════════════════════════════════ */
+const params = new URLSearchParams(window.location.search);
+const courseId = parseInt(params.get('course')) || 1;
+const course   = COURSES[courseId];
+
+if (!course) {
+  document.body.innerHTML = '<div style="text-align:center;padding:100px;font-family:sans-serif"><h2>Course not found</h2><a href="courses.html">← Back to courses</a></div>';
+}
+
+// Flatten all lessons with indices
+const allLessons = [];
+course.sections.forEach((sec, si) => {
+  sec.lessons.forEach((les, li) => {
+    allLessons.push({ ...les, sectionTitle: sec.title, sectionIdx: si, lessonIdx: li, globalIdx: allLessons.length });
+  });
+});
+
+let currentLesson = null;
+let completed = JSON.parse(localStorage.getItem('completed_' + courseId) || '[]');
+
+/* ── Render page title ── */
+document.getElementById('player-course-title').textContent = course.title;
+document.title = course.title + ' — AI Freedom Formula';
+
+/* ── Render sidebar ── */
+function renderSidebar() {
+  const list = document.getElementById('lesson-list');
+  list.innerHTML = '';
+  let lessonNum = 0;
+
+  course.sections.forEach((sec, si) => {
+    const secEl = document.createElement('div');
+    secEl.className = 'sidebar-section';
+    secEl.innerHTML = `<div class="sidebar-sec-header" onclick="toggleSection(this)">
+      <span class="ss-arrow">▼</span>
+      <span class="ss-title">${sec.title}</span>
+      <span class="ss-count">${sec.lessons.length} lessons</span>
+    </div>
+    <div class="sidebar-sec-lessons" id="sec-lessons-${si}"></div>`;
+    const lessonContainer = secEl.querySelector(`#sec-lessons-${si}`);
+
+    sec.lessons.forEach((les, li) => {
+      const globalIdx = allLessons.findIndex(l => l.sectionIdx === si && l.lessonIdx === li);
+      const isDone = completed.includes(globalIdx);
+      lessonNum++;
+      const lEl = document.createElement('div');
+      lEl.className = 'sidebar-lesson' + (isDone ? ' done' : '');
+      lEl.dataset.idx = globalIdx;
+      lEl.innerHTML = `
+        <div class="sl-num">${isDone ? '✅' : lessonNum}</div>
+        <div class="sl-body">
+          <div class="sl-title">${les.title}</div>
+          <div class="sl-duration">⏱ ${les.duration}</div>
+        </div>
+        <div class="sl-tags">${(les.tags || []).map(t => `<span class="sl-tag">${t}</span>`).join('')}</div>
+      `;
+      lEl.addEventListener('click', () => loadLesson(globalIdx));
+      lessonContainer.appendChild(lEl);
+    });
+
+    list.appendChild(secEl);
+  });
+
+  updateProgress();
+}
+
+function toggleSection(header) {
+  const lessons = header.nextElementSibling;
+  lessons.classList.toggle('collapsed');
+  header.querySelector('.ss-arrow').style.transform = lessons.classList.contains('collapsed') ? 'rotate(-90deg)' : '';
+}
+
+/* ── Load lesson ── */
+function loadLesson(globalIdx) {
+  currentLesson = globalIdx;
+  const les = allLessons[globalIdx];
+
+  // Update active state in sidebar
+  document.querySelectorAll('.sidebar-lesson').forEach(el => {
+    el.classList.toggle('active', +el.dataset.idx === globalIdx);
+  });
+
+  // Scroll lesson into view in sidebar
+  const activeLesson = document.querySelector('.sidebar-lesson.active');
+  if (activeLesson) activeLesson.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+  // Update video area
+  const placeholder = document.getElementById('video-placeholder');
+  const iframe      = document.getElementById('video-iframe');
+  const vpTitle     = document.getElementById('vp-lesson-title');
+  const vpSub       = document.getElementById('vp-lesson-sub');
+
+  if (les.video) {
+    placeholder.style.display = 'none';
+    iframe.style.display = 'block';
+    iframe.src = les.video;
+    iframe.title = les.title;
+  } else {
+    iframe.style.display = 'none';
+    iframe.src = '';
+    placeholder.style.display = 'flex';
+    vpTitle.textContent = les.title;
+    vpSub.textContent = '🎥 Video coming soon — we\'re adding new content weekly!';
+  }
+
+  // Update lesson info
+  document.getElementById('li-section').textContent = les.sectionTitle;
+  document.getElementById('li-title').textContent    = les.title;
+  document.getElementById('li-desc').textContent     = les.desc;
+
+  const tagsEl = document.getElementById('li-tags');
+  tagsEl.innerHTML = (les.tags || []).map(t => `<span class="li-tag">${t}</span>`).join('');
+
+  // Mark as complete after 3 sec
+  if (!completed.includes(globalIdx)) {
+    setTimeout(() => markComplete(globalIdx), 3000);
+  }
+
+  // Nav buttons
+  document.getElementById('btn-prev').disabled = globalIdx === 0;
+  document.getElementById('btn-next').disabled = globalIdx === allLessons.length - 1;
+  document.getElementById('btn-next').textContent = globalIdx === allLessons.length - 1 ? '✅ Finished!' : 'Next →';
+
+  // Hide overview, show lesson info
+  document.getElementById('course-overview').style.display = 'none';
+  document.getElementById('lesson-info').style.display = 'block';
+}
+
+function navigate(dir) {
+  if (currentLesson === null) { loadLesson(0); return; }
+  const next = currentLesson + dir;
+  if (next >= 0 && next < allLessons.length) loadLesson(next);
+}
+
+function markComplete(idx) {
+  if (!completed.includes(idx)) {
+    completed.push(idx);
+    localStorage.setItem('completed_' + courseId, JSON.stringify(completed));
+    const el = document.querySelector(`.sidebar-lesson[data-idx="${idx}"]`);
+    if (el) { el.classList.add('done'); el.querySelector('.sl-num').textContent = '✅'; }
+    updateProgress();
+  }
+}
+
+function updateProgress() {
+  const pct = Math.round(completed.length / allLessons.length * 100);
+  document.getElementById('progress-text').textContent = pct + '%';
+  document.getElementById('sp-fill').style.width = pct + '%';
+  document.getElementById('sp-count').textContent = completed.length + ' / ' + allLessons.length + ' lessons';
+}
+
+/* ── Render overview ── */
+document.getElementById('about-content').innerHTML = `
+  <div class="co-about">
+    <div class="co-hero">
+      <span class="co-emoji">${course.emoji}</span>
+      <div>
+        <h3>${course.title}</h3>
+        <p>${course.desc}</p>
+      </div>
+    </div>
+    <div class="co-meta">
+      <span>📹 ${allLessons.length} Lessons</span>
+      <span>🆓 100% Free</span>
+      <span>📜 Certificate Included</span>
+    </div>
+    <div class="co-start">
+      <button class="btn btn-fire" onclick="loadLesson(0)">▶ Start First Lesson</button>
+    </div>
+  </div>`;
+
+document.getElementById('outcomes-content').innerHTML = `
+  <div class="outcomes-list">
+    ${course.outcomes.map(o => `<div class="outcome-item">✅ ${o}</div>`).join('')}
+  </div>`;
+
+/* ── Tabs ── */
+document.querySelectorAll('.co-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.co-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.co-content').forEach(c => c.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+  });
+});
+
+/* ── Mobile sidebar toggle ── */
+function toggleSidebar() {
+  document.getElementById('player-sidebar').classList.toggle('sidebar-open');
+}
+
+/* ── Burger ── */
+const burger = document.getElementById('burger');
+if (burger) {
+  burger.style.display = '';
+}
+
+/* ── Init ── */
+renderSidebar();
+
+// Auto-start first lesson if on mobile (skip)
+// loadLesson(0); // Uncomment to auto-start
+
+/* ── Keyboard shortcuts ── */
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === 'n') navigate(1);
+  if (e.key === 'ArrowLeft'  || e.key === 'p') navigate(-1);
+});
+</script>
+</body>
+</html>
